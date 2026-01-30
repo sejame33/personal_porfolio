@@ -1,0 +1,911 @@
+@charset "utf-8";
+
+/* reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  font-size: inherit;
+}
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+img {
+  vertical-align: middle;
+}
+a img {
+  border: none;
+}
+li {
+  list-style: none;
+}
+address,
+em,
+i {
+  font-style: normal;
+}
+a:focus {
+  outline: none;
+}
+button:focus {
+  outline: none;
+}
+
+/* font */
+@font-face {
+  font-family: "Nohemi";
+  src: url("../font/Nohemi-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Nohemi";
+  src: url("../font/Nohemi-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "GangwonEducationSaeum";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEduSaeeum_OTFMediumA.woff")
+    format("woff");
+  font-weight: normal;
+  font-display: swap;
+}
+
+/* layout + 공통요소 */
+html,
+body {
+  background: #fff;
+}
+body {
+  font-family: "Geist", sans-serif;
+  background: #336bec;
+  font-size: 18px;
+}
+.title {
+  font-size: 100px;
+  line-height: 0.95;
+  font-weight: 700;
+  letter-spacing: -3px;
+}
+.subtitle {
+  color: #9c9c9c;
+  font-family: "Pretendard", sans-serif;
+  font-family: 400;
+}
+
+/* header */
+header {
+  padding-top: 50px;
+}
+.header-wrap {
+  width: 40%;
+  background: #000;
+  color: #fff;
+  margin: 0 auto;
+  padding: 15px 110px 15px 140px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 50px;
+}
+
+.header-wrap .gnb {
+  font-size: 28px;
+  font-family:
+    "Nohemi",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Apple SD Gothic Neo",
+    "Noto Sans KR",
+    sans-serif;
+  font-weight: 700;
+}
+
+.header-wrap .lnb-wrap ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 36px;
+  font-family:
+    "Nohemi",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Apple SD Gothic Neo",
+    "Noto Sans KR",
+    sans-serif;
+  font-weight: 400;
+}
+
+/* section.hero */
+.hero {
+  background: #336bec;
+  position: relative;
+}
+
+.hero .hero-textbox {
+  text-align: center;
+  margin-top: 130px;
+  color: #fff;
+  position: relative;
+}
+
+.hero .hero-textbox .subtext {
+  font-family: "Pretendard", sans-serif;
+  font-weight: 300;
+  margin-bottom: 30px;
+}
+
+.hero .hero-textbox .hero-title {
+  font-size: 133px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  line-height: 0.9;
+}
+
+.hero .hero-textbox .hero-title span {
+  font-size: 180px;
+}
+
+.hero .hero-textbox .hero-deco {
+  position: absolute;
+}
+
+.hero .hero-textbox .hero-deco.a {
+  left: 31%;
+  top: 40%;
+}
+
+.hero .hero-textbox .hero-deco.b {
+  left: 45%;
+  bottom: -2%;
+}
+
+.hero .hero-textbox .hero-deco.c {
+  right: 23%;
+  top: 49%;
+}
+
+.hero .hero-cloud {
+  position: absolute;
+}
+
+.hero .hero-cloud.a {
+  left: 11%;
+  top: 0;
+}
+
+.hero .hero-cloud.b {
+  left: 21%;
+  top: -6%;
+}
+
+.hero .hero-cloud.c {
+  right: 10%;
+  top: 10%;
+}
+
+.hero .hero-char {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 75px;
+  position: relative;
+}
+
+.hero .hero-char .hero-char-img {
+  transform: rotate(22deg);
+  margin-right: 150px;
+  width: 30%;
+}
+
+.hero .hero-char .hero-char-arrow {
+  position: absolute;
+  right: 26%;
+  top: 10px;
+  width: 12%;
+}
+
+.hero .cloud-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hero .cloud-wrap .hero-bg-cloud.a {
+  position: absolute;
+  left: 0;
+  bottom: -30px;
+  width: 40%;
+}
+
+.hero .cloud-wrap .hero-bg-cloud.b {
+  position: absolute;
+  right: 0;
+  bottom: -30px;
+  width: 40%;
+}
+
+.hero .cloud-wrap .scroll-down-btn {
+  display: block;
+  margin: 0 auto;
+  font-size: 14px;
+  font-family:
+    "Nohemi",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Apple SD Gothic Neo",
+    "Noto Sans KR",
+    sans-serif;
+  font-weight: 700;
+  background: #fff;
+  padding: 15px 36px;
+  border-radius: 50px;
+  margin-top: 80px;
+  line-height: 1;
+  margin-bottom: 260px;
+}
+
+/* section.service */
+.sticky-scene {
+  position: relative;
+  height: 600vh;
+  background: #fff;
+  padding-top: 60vh;
+  padding-bottom: 20vh;
+}
+
+.sticky-scene .sticky-center {
+  position: sticky;
+  top: 45%;
+  transform: translateY(-50%);
+  z-index: 0;
+  text-align: center;
+  width: min(900px, 92%);
+  margin: 0 auto;
+}
+.sticky-scene .sticky-center .badge {
+  display: inline-block;
+  transform: rotate(-17deg);
+  margin-right: 280px;
+}
+
+.sticky-scene .sticky-center .desc {
+  font-size: 24px;
+  color: #9c9c9c;
+  font-family: "Pretendard", sans-serif;
+  font-weight: 300;
+  margin-top: 36px;
+}
+
+.sticky-scene .sticky-center .desc span {
+  font-weight: 500;
+  color: #707070;
+}
+
+.sticky-scene .cards-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.sticky-scene .cards-layer .card {
+  position: absolute;
+  text-align: center;
+  transform: translateY(260px) scale(0.94);
+  opacity: 1;
+  will-change: transform, opacity;
+}
+
+.sticky-scene .cards-layer .card .label {
+  margin-top: 8px;
+  font-size: 20px;
+  text-align: right;
+  font-weight: 400;
+  margin-right: 4px;
+}
+
+.sticky-scene .cards-layer .card--tl {
+  left: 15%;
+  top: 8%;
+}
+.sticky-scene .cards-layer .card--tr {
+  right: 15%;
+  top: 28%;
+}
+.sticky-scene .cards-layer .card--bl {
+  left: 15%;
+  top: 48%;
+}
+.sticky-scene .cards-layer .card--br {
+  right: 15%;
+  top: 68%;
+}
+
+/* ===== ABOUT SECTION ===== */
+.about-scene {
+  position: relative;
+  background: #fff;
+  height: 600vh;
+  padding-bottom: 20vh;
+}
+
+.about-scene .about-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.about-scene .about-sticky .about-inner {
+  width: 100%;
+  padding: 0 160px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Left */
+.about-scene .about-sticky .about-inner .about-left .about-badge {
+  display: inline-block;
+  transform: rotate(-17deg);
+}
+
+.about-scene .about-sticky .about-inner .about-left .about-illust {
+  margin-top: 150px;
+  width: 50%;
+  display: block;
+}
+
+/* Right */
+.about-scene .about-sticky .about-inner .about-right {
+  flex: 1.2;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto;
+}
+
+.about-scene .about-sticky .about-inner .about-right .about-quote {
+  position: relative;
+  font-size: 45px;
+  line-height: 1.65;
+  letter-spacing: -3px;
+  text-align: right;
+}
+
+.about-scene .about-sticky .about-inner .about-right .about-quote .line {
+  position: relative;
+  display: inline-block;
+}
+
+.about-quote .base .kw,
+.about-quote .base .rest {
+  color: #b0b4bb;
+  font-weight: 400;
+}
+.about-quote .base .kw {
+  font-weight: 500;
+}
+
+.about-quote .fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0%;
+}
+
+.about-quote .fill .rest {
+  color: #111;
+  font-weight: 400;
+}
+.about-quote .fill .kw {
+  color: #336bec;
+  font-weight: 500;
+}
+
+.about-quote .fill {
+  transition: width 80ms linear;
+}
+
+.about-quote .semi-quote {
+  font-family: "Geist", sans-serif !important;
+  font-weight: 300;
+}
+
+.about-quote .kw .semi-quote,
+.about-quote .fill .kw .semi-quote,
+.about-quote .base .kw .semi-quote {
+  font-family: "Geist", sans-serif !important;
+}
+
+/* ===== PROVIDE ===== */
+.provide {
+  background: #fff;
+  padding-bottom: 150px;
+}
+
+.provide-inner {
+  padding: 0 160px;
+  margin: 0 auto;
+}
+
+.provide-head {
+  margin-bottom: 64px;
+}
+
+.provide-head .badge {
+  display: block;
+  transform: rotate(-17deg);
+  margin-bottom: 5px;
+}
+
+.provide-text-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.provide-text-wrap .title {
+  margin-left: 10px;
+}
+
+.provide-text-wrap .subtitle {
+  text-align: right;
+  margin-top: auto;
+}
+
+/* ===== 카드 컨테이너 ===== */
+.provide-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  overflow: hidden;
+  padding-top: 80px;
+}
+
+/* ===== 카드 바깥 (등장 전용) ===== */
+.p-card {
+  --baseY: 400px;
+  --inY: 160px;
+
+  transform: translateY(var(--baseY));
+  transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* scrolla 진입 */
+.provide-cards.cards-on .p-card {
+  transform: translateY(var(--inY));
+}
+
+/* 순차 등장 */
+.provide-cards.cards-on .p-card:nth-child(1) {
+  transition-delay: 120ms;
+}
+.provide-cards.cards-on .p-card:nth-child(2) {
+  transition-delay: 240ms;
+}
+.provide-cards.cards-on .p-card:nth-child(3) {
+  transition-delay: 360ms;
+}
+
+/* ===== 카드 안쪽 (hover 전용) ===== */
+.p-card-inner {
+  background: #336bec;
+  border: 4px solid #111;
+  border-radius: 20px;
+  padding: 46px;
+  min-height: 500px;
+  color: #fff;
+
+  transform: translateY(0);
+  transition: transform 220ms ease;
+}
+
+/* hover — 딜레이 ❌, 즉각 반응 */
+.provide-cards.cards-on .p-card:hover .p-card-inner {
+  transform: translateY(-140px); /* = 160 → 20 느낌 */
+}
+
+/* ===== 설명 ===== */
+.p-card-desc {
+  position: absolute;
+  left: 46px;
+  right: 46px;
+  bottom: 100px;
+
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 300ms ease,
+    transform 300ms ease;
+}
+
+.provide-cards.cards-on .p-card:hover .p-card-desc {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* 등장 애니메이션 */
+@keyframes provide-rise {
+  from {
+    transform: translateY(var(--baseY));
+  }
+  to {
+    transform: translateY(var(--inY));
+  }
+}
+
+/* ===== 카드 제목 ===== */
+.p-card-title {
+  font-size: 36px;
+  line-height: 1.3;
+  font-weight: 500;
+}
+
+/* ===== 카드 설명 ===== */
+.p-card-desc {
+  position: absolute;
+  left: 46px;
+  right: 46px;
+  bottom: 100px;
+
+  color: #000;
+  font-size: 18px;
+  line-height: 1.2;
+
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 300ms ease,
+    transform 300ms ease;
+}
+
+/* ===== BEHIND (full scene horizontal pan) ===== */
+.behind {
+  background: #fff;
+  overflow: hidden; /* 화면 밖 가로로 나가는 거 숨김 */
+}
+
+/* pin되는 화면(=보이는 창) */
+.behind-viewport {
+  height: 100vh;
+  overflow: hidden;
+  padding: 0; /* ⭐ 제거 */
+  display: flex;
+  align-items: center;
+  background: #fff;
+}
+
+/* 실제로 가로로 움직이는 전체 씬 */
+.behind-track {
+  display: flex;
+  align-items: center;
+  gap: 300px;
+  height: 100%;
+  padding-left: 160px; /* ⭐ 여기로 이동 */
+  padding-right: 160px; /* ⭐ 여기로 이동 */
+}
+
+.card-wrap {
+  display: flex;
+  gap: 50px;
+}
+/* 왼쪽 텍스트(첫 “화면”의 일부) */
+.bh-intro {
+  flex: 0 0 auto;
+  height: 66%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bh-intro .badge {
+  display: inline-block;
+  transform: rotate(-17deg);
+}
+
+.bh-intro .title {
+  margin-left: 8px;
+}
+
+.bh-intro .subtitle {
+  margin-left: 8px;
+}
+
+/* 카드 패널 */
+.bh-panel {
+  flex: 0 0 auto;
+  width: 500px;
+}
+
+/* 카드 */
+.bh-card {
+  position: relative;
+  width: 100%;
+}
+
+.bh-img {
+  width: 100%;
+  display: block;
+}
+
+.bh-meta {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 30px;
+  width: 100%;
+}
+.bh-meta h3 {
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.bh-meta-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bh-meta p {
+  margin-top: 4px;
+  font-size: 18px;
+  font-weight: 400;
+  color: #5e5e5e;
+  font-family: "Pretendard", sans-serif;
+}
+
+/* 스티커: 등장 애니메이션 위해 초기 숨김 */
+.bh-sticker {
+  position: absolute;
+  pointer-events: none;
+
+  opacity: 0;
+  transform: translateY(10px) scale(0.85) rotate(-10deg);
+}
+
+.bh-sticker.a {
+  top: -93px;
+  left: -107px;
+  transform: rotate(0deg) !important;
+}
+
+.bh-sticker.b {
+  bottom: 110px;
+  left: -130px;
+}
+
+.bh-sticker.c {
+  top: -47px;
+  right: 30px;
+  transform: rotate(0deg) !important;
+}
+
+.bh-sticker.d {
+  bottom: -70px;
+  left: -110px;
+  transform: rotate(0deg) !important;
+}
+
+.bh-endpad {
+  width: 0;
+}
+
+/* user 섹션 */
+.user-section {
+  display: flex;
+  justify-content: center;
+  background: #fff;
+  padding: 150px 0;
+}
+
+.user-section .user-wrap .title {
+  text-align: center;
+  margin-bottom: 110px;
+  font-size: 150px;
+}
+
+.user-section .user-wrap {
+  position: relative;
+}
+
+.user-section .user-wrap .user-badge {
+  transform: rotate(-17deg);
+  margin-left: 130px;
+  margin-bottom: 46px;
+}
+
+.user-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.user-svg {
+  width: 160px; /* ⭐ 여기서 전체 크기 조절 */
+  height: auto;
+  overflow: visible;
+  position: absolute;
+  z-index: 3;
+}
+
+.user-svg--left {
+  left: 3%;
+  bottom: 45%;
+}
+
+.user-svg--right {
+  right: 0;
+  bottom: 240px;
+  transform: scaleX(-1) scaleY(-1);
+}
+
+/* 선 애니메이션 */
+.user-line {
+  fill: none;
+  stroke: #000;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.user-arrow {
+  position: absolute;
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+  z-index: 4;
+}
+
+/* 위치/회전은 그대로 */
+.user-arrow--left {
+  left: 14px;
+  top: 567px;
+  rotate: 25deg; /* transform 충돌 방지 */
+}
+
+.user-arrow--right {
+  right: -7px;
+  bottom: 262px;
+  rotate: 20deg;
+}
+
+/* 등장 */
+.user-arrow.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.user-abs-text {
+  position: absolute;
+  transition:
+    opacity 0.28s ease,
+    transform 0.28s ease;
+  font-size: 18px;
+  color: #000;
+  line-height: 1.35;
+  white-space: nowrap;
+  font-size: 40px;
+  pointer-events: none;
+  font-family: "GangwonEducationSaeum";
+  opacity: 0; /* ❗ 처음엔 숨김 */
+  transform: translateY(6px); /* 살짝 내려둠 */
+  z-index: 5;
+}
+
+.user-abs-text.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.user-abs-text--left {
+  left: -40px;
+  top: 53%;
+}
+
+/* 오른쪽 텍스트 위치 */
+.user-abs-text--right {
+  right: -120px;
+  bottom: 25%;
+}
+
+.animate {
+  visibility: hidden;
+}
+
+.animate.user-motion {
+  visibility: visible;
+}
+
+.bottom-text {
+  font-size: 36px;
+  font-family: "Pretendard", sans-serif;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 170px;
+}
+
+.bottom-text .blue {
+  color: #336bec;
+  font-weight: 500;
+}
