@@ -147,7 +147,7 @@ body {
   font-family: 400;
 }
 
-/* header */
+/* HEADER */
 header {
   padding-top: 50px;
 }
@@ -194,7 +194,7 @@ header {
   font-weight: 400;
 }
 
-/* section.hero */
+/* section.HERO */
 .hero {
   background: #336bec;
   position: relative;
@@ -324,7 +324,7 @@ header {
   margin-bottom: 260px;
 }
 
-/* section.service */
+/* section.STICKY */
 .sticky-scene {
   position: relative;
   height: 600vh;
@@ -400,7 +400,7 @@ header {
   top: 68%;
 }
 
-/* ===== ABOUT SECTION ===== */
+/* section.ABOUT-INTRO */
 .about-scene {
   position: relative;
   background: #fff;
@@ -425,7 +425,6 @@ header {
   align-items: center;
 }
 
-/* Left */
 .about-scene .about-sticky .about-inner .about-left .about-badge {
   display: inline-block;
   transform: rotate(-17deg);
@@ -437,7 +436,6 @@ header {
   display: block;
 }
 
-/* Right */
 .about-scene .about-sticky .about-inner .about-right {
   flex: 1.2;
   display: flex;
@@ -500,7 +498,7 @@ header {
   font-family: "Geist", sans-serif !important;
 }
 
-/* ===== PROVIDE ===== */
+/* section.PROVIDE */
 .provide {
   background: #fff;
   padding-bottom: 150px;
@@ -535,7 +533,6 @@ header {
   margin-top: auto;
 }
 
-/* ===== 카드 컨테이너 ===== */
 .provide-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -544,7 +541,6 @@ header {
   padding-top: 80px;
 }
 
-/* ===== 카드 바깥 (등장 전용) ===== */
 .p-card {
   --baseY: 400px;
   --inY: 160px;
@@ -553,12 +549,10 @@ header {
   transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* scrolla 진입 */
 .provide-cards.cards-on .p-card {
   transform: translateY(var(--inY));
 }
 
-/* 순차 등장 */
 .provide-cards.cards-on .p-card:nth-child(1) {
   transition-delay: 120ms;
 }
@@ -569,7 +563,6 @@ header {
   transition-delay: 360ms;
 }
 
-/* ===== 카드 안쪽 (hover 전용) ===== */
 .p-card-inner {
   background: #336bec;
   border: 4px solid #111;
@@ -582,12 +575,10 @@ header {
   transition: transform 220ms ease;
 }
 
-/* hover — 딜레이 ❌, 즉각 반응 */
 .provide-cards.cards-on .p-card:hover .p-card-inner {
-  transform: translateY(-140px); /* = 160 → 20 느낌 */
+  transform: translateY(-140px);
 }
 
-/* ===== 설명 ===== */
 .p-card-desc {
   position: absolute;
   left: 46px;
@@ -605,7 +596,7 @@ header {
   opacity: 1;
   transform: translateY(0);
 }
-/* 등장 애니메이션 */
+
 @keyframes provide-rise {
   from {
     transform: translateY(var(--baseY));
@@ -615,23 +606,22 @@ header {
   }
 }
 
-/* ===== 카드 제목 ===== */
 .p-card-title {
   font-size: 36px;
   line-height: 1.3;
   font-weight: 500;
 }
 
-/* ===== 카드 설명 ===== */
 .p-card-desc {
   position: absolute;
   left: 46px;
   right: 46px;
-  bottom: 100px;
+  bottom: 90px;
 
-  color: #000;
+  color: #092972;
   font-size: 18px;
-  line-height: 1.2;
+  line-height: 1.3;
+  font-weight: 400;
 
   opacity: 0;
   transform: translateY(24px);
@@ -640,37 +630,35 @@ header {
     transform 300ms ease;
 }
 
-/* ===== BEHIND (full scene horizontal pan) ===== */
+/* section.BEHIND */
 .behind {
   background: #fff;
-  overflow: hidden; /* 화면 밖 가로로 나가는 거 숨김 */
+  overflow: hidden;
 }
 
-/* pin되는 화면(=보이는 창) */
 .behind-viewport {
   height: 100vh;
   overflow: hidden;
-  padding: 0; /* ⭐ 제거 */
+  padding: 0;
   display: flex;
   align-items: center;
   background: #fff;
 }
 
-/* 실제로 가로로 움직이는 전체 씬 */
 .behind-track {
   display: flex;
   align-items: center;
   gap: 300px;
   height: 100%;
-  padding-left: 160px; /* ⭐ 여기로 이동 */
-  padding-right: 160px; /* ⭐ 여기로 이동 */
+  padding-left: 160px;
+  padding-right: 160px;
 }
 
 .card-wrap {
   display: flex;
   gap: 50px;
 }
-/* 왼쪽 텍스트(첫 “화면”의 일부) */
+
 .bh-intro {
   flex: 0 0 auto;
   height: 66%;
@@ -692,13 +680,11 @@ header {
   margin-left: 8px;
 }
 
-/* 카드 패널 */
 .bh-panel {
   flex: 0 0 auto;
   width: 500px;
 }
 
-/* 카드 */
 .bh-card {
   position: relative;
   width: 100%;
@@ -734,7 +720,6 @@ header {
   font-family: "Pretendard", sans-serif;
 }
 
-/* 스티커: 등장 애니메이션 위해 초기 숨김 */
 .bh-sticker {
   position: absolute;
   pointer-events: none;
@@ -770,7 +755,7 @@ header {
   width: 0;
 }
 
-/* user 섹션 */
+/* section.USER */
 .user-section {
   display: flex;
   justify-content: center;
@@ -800,7 +785,7 @@ header {
   align-items: center;
 }
 .user-svg {
-  width: 160px; /* ⭐ 여기서 전체 크기 조절 */
+  width: 160px;
   height: auto;
   overflow: visible;
   position: absolute;
@@ -818,7 +803,6 @@ header {
   transform: scaleX(-1) scaleY(-1);
 }
 
-/* 선 애니메이션 */
 .user-line {
   fill: none;
   stroke: #000;
@@ -837,11 +821,10 @@ header {
   z-index: 4;
 }
 
-/* 위치/회전은 그대로 */
 .user-arrow--left {
   left: 14px;
   top: 567px;
-  rotate: 25deg; /* transform 충돌 방지 */
+  rotate: 25deg;
 }
 
 .user-arrow--right {
@@ -850,7 +833,6 @@ header {
   rotate: 20deg;
 }
 
-/* 등장 */
 .user-arrow.is-visible {
   opacity: 1;
   transform: translateY(0);
@@ -868,8 +850,8 @@ header {
   font-size: 40px;
   pointer-events: none;
   font-family: "GangwonEducationSaeum";
-  opacity: 0; /* ❗ 처음엔 숨김 */
-  transform: translateY(6px); /* 살짝 내려둠 */
+  opacity: 0;
+  transform: translateY(6px);
   z-index: 5;
 }
 
@@ -883,7 +865,6 @@ header {
   top: 53%;
 }
 
-/* 오른쪽 텍스트 위치 */
 .user-abs-text--right {
   right: -120px;
   bottom: 25%;
@@ -908,4 +889,135 @@ header {
 .bottom-text .blue {
   color: #336bec;
   font-weight: 500;
+}
+
+/* section.RECRUIT */
+.recruit-section {
+  background: #fff;
+  padding: 150px 0 0;
+  overflow: hidden;
+  margin: 0 auto 150px;
+}
+
+.recruit-wrap {
+  width: 100%;
+  position: relative;
+}
+
+/* 상단 왼쪽 subtitle */
+.recruit-section .recruit-wrap .subtitle {
+  margin: 0 0 40px 0;
+  padding-left: 160px; /* 느낌상 왼쪽 여백 */
+  margin-bottom: 160px;
+}
+
+/* 가운데 스테이지 */
+.recruit-stage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.recruit-paper {
+  position: relative;
+}
+
+.recruit-paper-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 카드 공통 */
+.recruit-card {
+  position: absolute;
+  background: #fff;
+  border: 4px solid #111;
+  border-radius: 20px;
+  padding: 20px 100px;
+  font-size: 14px;
+  white-space: nowrap;
+
+  opacity: 1;
+  z-index: 4;
+  color: #336bec;
+  font-weight: 600;
+  font-size: 24px;
+}
+
+/* 사진 느낌 배치(필요하면 너가 픽셀만 조정) */
+.recruit-card--1 {
+  left: -300px;
+  top: 77px;
+}
+.recruit-card--2 {
+  right: -193px;
+  top: 180px;
+}
+.recruit-card--3 {
+  left: -120px;
+  top: 420px;
+}
+.recruit-card--4 {
+  left: 186px;
+  top: 570px;
+}
+.recruit-card--5 {
+  left: -226px;
+  top: 849px;
+}
+
+/* 인사이트 */
+.recruit-insight {
+  position: absolute;
+  left: 50%;
+  bottom: 18%;
+  transform: translateX(-50%);
+  opacity: 1;
+  z-index: 4;
+}
+
+.recruit-insight .tag {
+  display: block;
+  transform: rotate(-17deg);
+  position: absolute;
+  left: -40px;
+  bottom: 60px;
+}
+
+.recruit-insight .text {
+  font-size: 36px;
+  white-space: nowrap;
+}
+
+/* 돋보기 (이미지) */
+.recruit-magnifier {
+  position: absolute;
+  width: 100%;
+  pointer-events: none;
+  z-index: 6;
+  left: 0;
+  top: 0;
+
+  transform: translate3d(0, 0, 0);
+  transition: transform 420ms ease;
+  will-change: transform;
+}
+
+/* 섹션 활성 중 따라다닐 때 */
+.recruit-magnifier.is-following {
+  transition: transform 90ms linear;
+}
+
+/* 구름(이미지 2개) */
+.recruit-clouds {
+  position: absolute;
+  bottom: -8%;
+  height: 1100px;
+}
+
+/* 공통 */
+.recruit-cloud {
+  position: absolute;
 }

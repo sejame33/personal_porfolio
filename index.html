@@ -15,10 +15,10 @@
     />
   </head>
   <body>
+    <!-- HEADER -->
     <header>
       <div class="header-wrap">
         <h2 class="gnb"><a href="#">Portfolio</a></h2>
-
         <nav class="lnb-wrap">
           <ul>
             <li class="lnb"><a href="#home">Home</a></li>
@@ -30,7 +30,7 @@
       </div>
     </header>
 
-    <!-- section.hero -->
+    <!-- section.HERO -->
     <section class="hero" id="hero">
       <div class="hero-textbox">
         <p class="subtext">INTRODUCING SERVICE,</p>
@@ -52,6 +52,8 @@
         <div class="scroll-down-btn">SCROLL DOWN</div>
       </div>
     </section>
+
+    <!-- section.STICKY -->
     <section class="sticky-scene" id="service">
       <div class="sticky-center">
         <div class="badge"><img src="./img/section-badge-1.svg" alt="" /></div>
@@ -94,20 +96,18 @@
       </div>
     </section>
 
+    <!-- section.ABOUT-INTRO -->
     <section class="about about-scene" id="about">
       <div class="about-sticky">
         <div class="about-inner">
-          <!-- LEFT -->
           <div class="about-left">
             <div class="about-badge">
               <img src="./img/section-badge-2.svg" alt="" />
             </div>
             <h2 class="title">ABOUT SERVICE</h2>
-
             <img src="./img/about-illust.svg" alt="" class="about-illust" />
           </div>
 
-          <!-- RIGHT -->
           <div class="about-right">
             <p class="about-quote js-about-quote">
               <span class="line" data-line="1">
@@ -150,6 +150,7 @@
       </div>
     </section>
 
+    <!-- section.PROVIDE -->
     <section class="provide" id="provide">
       <div class="provide-inner">
         <div class="provide-head">
@@ -163,14 +164,13 @@
           </div>
         </div>
 
-        <!-- ⭐ 카드 묶음에 animate -->
         <div class="provide-cards animate" data-animate="cards-on">
           <article class="p-card">
             <div class="p-card-inner">
               <h3 class="p-card-title">전달이 빠른<br />포트폴리오</h3>
               <div class="p-card-desc">
-                이 포트폴리오는 짧은 시간 안에 중요한 정보만 <br />빠르게
-                전달해, 핵심을 놓치지 않도록 돕습니다.
+                이 포트폴리오는 짧은 시간 안에 중요한 정보는<br />먼저 보이고,
+                자세한 내용은 필요할 때만<br />확인할 수 있습니다.
               </div>
             </div>
           </article>
@@ -198,11 +198,10 @@
       </div>
     </section>
 
-    <!-- ✅ BEHIND SECTION -->
+    <!-- section.BEHIND -->
     <section class="behind" id="behind">
       <div class="behind-viewport">
         <div class="behind-track">
-          <!-- ✅ 0) 첫 화면 왼쪽: 텍스트도 track 안에 포함(같이 이동) -->
           <div class="bh-intro">
             <div class="top">
               <img src="./img/section-badge-2.svg" alt="" class="badge" />
@@ -216,7 +215,6 @@
           </div>
 
           <div class="card-wrap">
-            <!-- ✅ 1) 카드들 -->
             <article class="bh-panel">
               <div class="bh-card">
                 <img class="bh-img" src="./img/behind-1.png" alt="" />
@@ -316,20 +314,18 @@
             </article>
           </div>
 
-          <!-- ✅ 끝 여백(마지막 카드 지나고도 약간 더 이동 여유) -->
           <div class="bh-endpad"></div>
         </div>
       </div>
     </section>
 
+    <!-- section.USER -->
     <section class="user-section" id="user-section">
       <div class="user-wrap">
         <div class="user-badge">
           <img src="./img/section-badge-3.svg" alt="" />
         </div>
-
         <h2 class="title">USER<br />RESEARCH</h2>
-
         <div class="user-center">
           <img
             class="user-illust"
@@ -338,7 +334,6 @@
           />
         </div>
 
-        <!-- 첫 번째 라인 -->
         <div class="user-anim-group animate" data-animate="user-motion">
           <svg
             class="user-svg user-svg--left"
@@ -352,7 +347,6 @@
               transform="translate(-551.5 -370.75)"
             />
           </svg>
-
           <img
             class="user-arrow user-arrow--left"
             src="./img/left-arrow.svg"
@@ -360,7 +354,6 @@
           />
           <p class="user-abs-text user-abs-text--left">팀 리더</p>
 
-          <!-- 두 번째 라인 -->
           <svg
             class="user-svg user-svg--right"
             xmlns="http://www.w3.org/2000/svg"
@@ -373,7 +366,6 @@
               transform="translate(-551.5 -370.75)"
             />
           </svg>
-
           <img
             class="user-arrow user-arrow--right"
             src="./img/right-arrow.svg"
@@ -381,6 +373,7 @@
           />
           <p class="user-abs-text user-abs-text--right">채용 담당자</p>
         </div>
+
         <div class="bottom-text">
           <p>
             그럼 이 서비스를 사용할 <span class="blue">[ 사용자 ]</span>는
@@ -391,7 +384,87 @@
       </div>
     </section>
 
-    <!-- ✅ GSAP + ScrollTrigger (CDN) : script.js 보다 위에! -->
+    <!-- section.RECRUIT -->
+    <section class="recruit-section" id="recruit-section">
+      <div class="recruit-wrap">
+        <!-- 상단 왼쪽 subtitle -->
+        <p class="subtitle">
+          실제 채용 공고를 기준으로 요구 역량을 분석해<br />
+          이 서비스가 커버해야 할 사용자의 페인포인트를 정리했습니다.
+        </p>
+
+        <!-- 중앙 스테이지(긴 이미지 + 카드 + 돋보기 + 인사이트) -->
+        <div class="recruit-stage">
+          <div class="recruit-paper">
+            <!-- ✅ 너의 긴 이미지로 교체 -->
+            <img
+              class="recruit-paper-img"
+              src="./img/recruit-paper.svg"
+              alt=""
+            />
+
+            <!-- 카드들 (초기 숨김, 스크롤로 순차 등장) -->
+            <div class="recruit-card recruit-card--1">
+              <span class="blue">채용 공고 분석 내용 1</span>
+            </div>
+
+            <div class="recruit-card recruit-card--2">
+              <span class="blue">채용 공고 분석 내용 2</span>
+            </div>
+
+            <div class="recruit-card recruit-card--3">
+              <span class="blue">채용 공고 분석 내용 3</span>
+            </div>
+
+            <div class="recruit-card recruit-card--4">
+              <span class="blue">채용 공고 분석 내용 4</span>
+            </div>
+
+            <div class="recruit-card recruit-card--5">
+              <span class="blue">채용 공고 분석 내용 5</span>
+            </div>
+
+            <!-- 돋보기(마우스 따라 이동) -->
+            <img
+              class="recruit-magnifier"
+              src="./img/magnifier.svg"
+              alt=""
+              aria-hidden="true"
+            />
+
+            <!-- 마지막 인사이트 -->
+            <div class="recruit-insight">
+              <span class="tag"
+                ><img src="./img/tag-badge-1.svg" alt=""
+              /></span>
+              <span class="text">채용 공고 분석에서 얻은 인사이트</span>
+            </div>
+
+            <!-- scrolla 트리거 그룹 -->
+            <div
+              class="recruit-anim-group animate"
+              data-animate="recruit-motion"
+            ></div>
+          </div>
+        </div>
+
+        <!-- 구름(아래로 내려가면 위로 뜸) -->
+        <div class="recruit-clouds">
+          <!-- ✅ 오른쪽(뒤) -->
+          <img
+            class="recruit-cloud recruit-cloud--right"
+            src="./img/cloud-right.svg"
+            alt=""
+          />
+          <!-- ✅ 왼쪽(앞) -->
+          <img
+            class="recruit-cloud recruit-cloud--left"
+            src="./img/cloud-left.svg"
+            alt=""
+          />
+        </div>
+      </div>
+    </section>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/scrolla.jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
