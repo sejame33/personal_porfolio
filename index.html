@@ -288,7 +288,7 @@
                 <div class="bh-meta">
                   <h3>FACE PAINTING</h3>
                   <div class="bh-meta-wrap">
-                    <p>최근 가장 기억남는 일은 페이스페인팅 봉사를 한거예요</p>
+                    <p>최근 가장 기억남는 일은 페이스페인팅 봉사를 했어요</p>
                     <p class="date">//2026</p>
                   </div>
                 </div>
@@ -387,23 +387,19 @@
     <!-- section.RECRUIT -->
     <section class="recruit-section" id="recruit-section">
       <div class="recruit-wrap">
-        <!-- 상단 왼쪽 subtitle -->
         <p class="subtitle">
           실제 채용 공고를 기준으로 요구 역량을 분석해<br />
           이 서비스가 커버해야 할 사용자의 페인포인트를 정리했습니다.
         </p>
 
-        <!-- 중앙 스테이지(긴 이미지 + 카드 + 돋보기 + 인사이트) -->
         <div class="recruit-stage">
-          <div class="recruit-paper">
-            <!-- ✅ 너의 긴 이미지로 교체 -->
+          <div class="recruit-paper animate" data-animate="recruit-on">
             <img
               class="recruit-paper-img"
               src="./img/recruit-paper.svg"
               alt=""
             />
 
-            <!-- 카드들 (초기 숨김, 스크롤로 순차 등장) -->
             <div class="recruit-card recruit-card--1">
               <span class="blue">채용 공고 분석 내용 1</span>
             </div>
@@ -423,40 +419,25 @@
             <div class="recruit-card recruit-card--5">
               <span class="blue">채용 공고 분석 내용 5</span>
             </div>
-
-            <!-- 돋보기(마우스 따라 이동) -->
-            <img
-              class="recruit-magnifier"
-              src="./img/magnifier.svg"
-              alt=""
-              aria-hidden="true"
-            />
-
-            <!-- 마지막 인사이트 -->
-            <div class="recruit-insight">
-              <span class="tag"
-                ><img src="./img/tag-badge-1.svg" alt=""
-              /></span>
-              <span class="text">채용 공고 분석에서 얻은 인사이트</span>
-            </div>
-
-            <!-- scrolla 트리거 그룹 -->
-            <div
-              class="recruit-anim-group animate"
-              data-animate="recruit-motion"
-            ></div>
+          </div>
+          <img
+            class="recruit-magnifier"
+            src="./img/magnifier.svg"
+            alt=""
+            aria-hidden="true"
+          />
+          <div class="recruit-insight">
+            <span class="tag"><img src="./img/tag-badge-1.svg" alt="" /></span>
+            <span class="text">채용 공고 분석에서 얻은 <b>인사이트</b></span>
           </div>
         </div>
 
-        <!-- 구름(아래로 내려가면 위로 뜸) -->
-        <div class="recruit-clouds">
-          <!-- ✅ 오른쪽(뒤) -->
+        <div class="recruit-clouds" data-animate="clouds-on">
           <img
             class="recruit-cloud recruit-cloud--right"
             src="./img/cloud-right.svg"
             alt=""
           />
-          <!-- ✅ 왼쪽(앞) -->
           <img
             class="recruit-cloud recruit-cloud--left"
             src="./img/cloud-left.svg"
@@ -465,6 +446,432 @@
         </div>
       </div>
     </section>
+
+    <!-- section.REVIEW -->
+    <section class="review-section" id="review">
+      <div class="review-wrap">
+        <div class="review-head">
+          <p class="review-sub">
+            퀄리티 높은 포트폴리오를 제작하기 위해,<br />
+            현재 포트폴리오 시장에서 강점과 문제점을 분석했습니다.
+          </p>
+          <span class="review-badge"
+            ><img src="./img/section-badge-3.svg" alt=""
+          /></span>
+          <h2 class="review-title">EXISTING PORTFOLIO REVIEW</h2>
+        </div>
+
+        <div class="review-stage">
+          <aside class="review-controls" aria-label="review controls">
+            <p class="review-label">Review</p>
+            <div class="review-btns">
+              <button
+                class="review-btn review-btn--prev"
+                type="button"
+                data-dir="-1"
+                aria-label="이전 리뷰"
+              >
+                <img
+                  class="btn-img btn-off"
+                  src="./img/push-btn-left.svg"
+                  alt=""
+                />
+                <img
+                  class="btn-img btn-on"
+                  src="./img/push-btn-left-on.svg"
+                  alt=""
+                />
+              </button>
+
+              <button
+                class="review-btn review-btn--next"
+                type="button"
+                data-dir="1"
+                aria-label="다음 리뷰"
+              >
+                <img
+                  class="btn-img btn-off"
+                  src="./img/push-btn-right.svg"
+                  alt=""
+                />
+                <img
+                  class="btn-img btn-on"
+                  src="./img/push-btn-right-on.svg"
+                  alt=""
+                />
+              </button>
+            </div>
+          </aside>
+
+          <!-- 카드가 지나가면 버튼 영역 뒤로 '숨게' 만드는 마스크 포함 -->
+          <div class="review-viewport">
+            <div class="review-mask" aria-hidden="true"></div>
+
+            <div class="review-track">
+              <!-- 카드 1 -->
+              <article class="review-card">
+                <div class="review-card-inner">
+                  <header class="review-card-top">
+                    <h3 class="review-card-ttl">
+                      PERSONAL PORTFOLIO ANALYZE 01
+                    </h3>
+                    <span class="review-card-meta"
+                      ><img src="./img/behance-icon.svg" alt="" />Behance</span
+                    >
+                  </header>
+
+                  <div class="review-card-body">
+                    <div class="review-card-shot">
+                      <img
+                        src="./img/review-thumb-1.png"
+                        alt="portfolio example 01"
+                      />
+                    </div>
+
+                    <div class="review-card-text">
+                      <div class="review-card--text-top">
+                        <p class="review-card-k">참고할 점</p>
+                        <p class="review-card-p">
+                          퀄리티 높은 포트폴리오를 제작하기 위해, 현재
+                          포트폴리오 시장에서 경쟁사를 분석했습니다.
+                        </p>
+                      </div>
+                      <div class="review-card-text-bottom">
+                        <p class="review-card-k">개선할 점</p>
+                        <p class="review-card-p">
+                          퀄리티 높은 포트폴리오를 제작하기 위해, 현재
+                          포트폴리오 시장에서 경쟁사를 분석했습니다.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- 카드 2 -->
+              <article class="review-card">
+                <div class="review-card-inner">
+                  <header class="review-card-top">
+                    <h3 class="review-card-ttl">
+                      PERSONAL PORTFOLIO ANALYZE 02
+                    </h3>
+                    <span class="review-card-meta"
+                      ><img src="./img/behance-icon.svg" alt="" />Behance</span
+                    >
+                  </header>
+
+                  <div class="review-card-body">
+                    <div class="review-card-shot">
+                      <img
+                        src="./img/review-thumb-2.png"
+                        alt="portfolio example 02"
+                      />
+                    </div>
+
+                    <div class="review-card-text">
+                      <div class="review-card--text-top">
+                        <p class="review-card-k">참고할 점</p>
+                        <p class="review-card-p">
+                          퀄리티 높은 포트폴리오를 제작하기 위해, 현재
+                          포트폴리오 시장에서 경쟁사를 분석했습니다.
+                        </p>
+                      </div>
+                      <div class="review-card-text-bottom">
+                        <p class="review-card-k">개선할 점</p>
+                        <p class="review-card-p">
+                          퀄리티 높은 포트폴리오를 제작하기 위해, 현재
+                          포트폴리오 시장에서 경쟁사를 분석했습니다.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- 카드 3 -->
+              <article class="review-card">
+                <div class="review-card-inner">
+                  <header class="review-card-top">
+                    <h3 class="review-card-ttl">
+                      PERSONAL PORTFOLIO ANALYZE 03
+                    </h3>
+                    <span class="review-card-meta"
+                      ><img src="./img/behance-icon.svg" alt="" />Behance</span
+                    >
+                  </header>
+
+                  <div class="review-card-body">
+                    <div class="review-card-shot">
+                      <img
+                        src="./img/review-thumb-3.png"
+                        alt="portfolio example 03"
+                      />
+                    </div>
+
+                    <div class="review-card-text">
+                      <div class="review-card--text-top">
+                        <p class="review-card-k">참고할 점</p>
+                        <p class="review-card-p">
+                          퀄리티 높은 포트폴리오를 제작하기 위해, 현재
+                          포트폴리오 시장에서 경쟁사를 분석했습니다.
+                        </p>
+                      </div>
+                      <div class="review-card-text-bottom">
+                        <p class="review-card-k">개선할 점</p>
+                        <p class="review-card-p">
+                          퀄리티 높은 포트폴리오를 제작하기 위해, 현재
+                          포트폴리오 시장에서 경쟁사를 분석했습니다.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- section.PROBLEM -->
+    <section class="problem" id="problem">
+      <div class="problem-wrap">
+        <!-- 상단 뱃지 -->
+        <span class="problem-badge">
+          <img src="./img/section-badge-4.svg" alt="" />
+        </span>
+
+        <!-- 타이틀 -->
+        <h2 class="problem-title">
+          WHAT IS THE<br />
+          PORTFOLIO’S<br />
+          KEY PROBLEM?
+        </h2>
+
+        <!-- 배경 구름들(작은 구름) -->
+        <div class="problem-clouds" aria-hidden="true">
+          <img
+            class="p-cloud c1 animate"
+            data-animate="pcloud-1"
+            src="./img/problem-cloud-1.svg"
+            alt=""
+          />
+          <img
+            class="p-cloud c2 animate"
+            data-animate="pcloud-2"
+            src="./img/problem-cloud-2.svg"
+            alt=""
+          />
+          <img
+            class="p-cloud c3 animate"
+            data-animate="pcloud-3"
+            src="./img/problem-cloud-3.svg"
+            alt=""
+          />
+          <img
+            class="p-cloud c4 animate"
+            data-animate="pcloud-4"
+            src="./img/problem-cloud-4.svg"
+            alt=""
+          />
+          <img
+            class="p-cloud c5 animate"
+            data-animate="pcloud-5"
+            src="./img/problem-cloud-5.svg"
+            alt=""
+          />
+        </div>
+
+        <!-- 중앙 큰 구름(메인 구름) -->
+        <div class="problem-main">
+          <div class="problem-main-mask animate" data-animate="cloud-rise">
+            <img
+              class="problem-main-cloud"
+              src="./img/problem-cloud-main.svg"
+              alt=""
+            />
+          </div>
+
+          <div class="problem-objects">
+            <img
+              class="problem-obj char-1 animate"
+              data-animate="char-1-on"
+              src="./img/problem-char-1.svg"
+              alt=""
+            />
+
+            <img
+              class="problem-obj char-2 animate"
+              data-animate="char-2-on"
+              src="./img/problem-char-2.svg"
+              alt=""
+            />
+
+            <img
+              class="problem-obj emoji-q animate"
+              data-animate="emoji-q-on"
+              src="./img/problem-emoji-q.svg"
+              alt=""
+            />
+
+            <img
+              class="problem-obj spark animate"
+              data-animate="spark-on"
+              src="./img/problem-spark.svg"
+              alt=""
+            />
+          </div>
+        </div>
+
+        <!-- 하단 텍스트 -->
+        <div class="problem-bottom">
+          <p class="problem-kor animate" data-animate="problem-kor-in">
+            문제를 이렇게<br />정의했어요!
+          </p>
+
+          <div class="problem-right animate" data-animate="problem-right-in">
+            <img
+              class="problem-bottom-emoji emoji-warn animate"
+              data-animate="problem-emoji-pop"
+              src="./img/problem-emoji-warn.svg"
+              alt=""
+            />
+
+            <p class="problem-footnote">
+              결과물은 충분히 제공되지만,<br />
+              어떤 문제를 어떻게 정의했고, 왜 그런 선택을 했는지에 대한
+              설명은<br />
+              파편적으로 존재하거나 생략된 경우가 많습니다.<br />
+              &nbsp;<br />
+              고로, 채용 담당자의 판단 시간을 기준으로 설계된 포트폴리오가
+              부족합니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- section.CLOCK -->
+    <section class="clock-scene" id="clock">
+      <!-- pin 되는 화면 -->
+      <div class="clock-sticky">
+        <!-- 시계(배경 + 바늘) -->
+        <div class="clock-wrap">
+          <!-- 시계판(원형) -->
+          <img class="clock-face" src="./img/clock-face.svg" alt="" />
+
+          <!-- 바늘들(이미지로) -->
+          <img class="clock-hand hour" src="./img/clock-hour.svg" alt="" />
+          <img class="clock-hand minute" src="./img/clock-minute.svg" alt="" />
+          <img class="clock-hand second" src="./img/clock-second.svg" alt="" />
+        </div>
+
+        <!-- 가운데 텍스트 -->
+        <div class="clock-center">
+          <span class="clock-badge"
+            ><img src="./img/section-badge-5.svg" alt=""
+          /></span>
+          <p class="clock-quote">“ 이 디자이너랑 일할지 말지를 ”</p>
+          <h2 class="clock-title">5분 만에 결정!</h2>
+          <p class="clock-sub">
+            빠른 시간 안에 이 디자이너의 사고 방식과 실무 역량을 이해하고,<br />
+            ‘함께 일해보고 싶다’는 판단에 도달하도록 돕는 것을 목표로 합니다.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="core" id="core">
+      <div class="core-inner">
+        <div class="core-head">
+          <span class="core-badge"
+            ><img src="./img/section-badge-6.svg" alt=""
+          /></span>
+          <h2 class="title">CORE<br />FEATURES</h2>
+          <p class="core-desc">
+            목표를 위해 핵심 역량을 정하고, 가장 잘 검증할 수 있는<br />사례만
+            선별했습니다.
+          </p>
+        </div>
+
+        <div class="core-list">
+          <!-- ITEM 1 -->
+          <article class="core-item core-item--1" data-core>
+            <p class="core-kicker">
+              <span class="core-kicker-bold">핵심 역량 01</span> - UXUI 디자인
+            </p>
+
+            <!-- ✅ 중앙 도달 시 파란색으로 바뀔 대상 -->
+            <h3 class="core-word">UXUI DESIGN</h3>
+
+            <!-- ✅ 아이콘들은 scrolla로 등장 -->
+            <div class="core-icons" aria-hidden="true">
+              <img
+                class="core-ic core-ic--sparkle1 animate"
+                data-animate="core-pop"
+                src="./img/core-ic-sparkle.svg"
+                alt=""
+              />
+              <img
+                class="core-ic core-ic--hand animate"
+                data-animate="core-pop"
+                src="./img/core-ic-hand.svg"
+                alt=""
+              />
+            </div>
+          </article>
+
+          <!-- ITEM 2 -->
+          <article class="core-item core-item--2" data-core>
+            <p class="core-kicker">
+              <span class="core-kicker-bold">핵심 역량 02</span> - 문제 정의와
+              해결
+            </p>
+            <h3 class="core-word">PROBLEM<br />SOLUTION</h3>
+
+            <div class="core-icons" aria-hidden="true">
+              <img
+                class="core-ic core-ic--chat animate"
+                data-animate="core-pop"
+                src="./img/core-ic-chat.svg"
+                alt=""
+              />
+              <img
+                class="core-ic core-ic--question animate"
+                data-animate="core-pop"
+                src="./img/core-ic-question.svg"
+                alt=""
+              />
+            </div>
+          </article>
+
+          <!-- ITEM 3 -->
+          <article class="core-item core-item--3" data-core>
+            <p class="core-kicker">
+              <span class="core-kicker-bold">핵심 역량 03</span> - 새로운
+              아이디어
+            </p>
+            <h3 class="core-word">NEW IDEAS</h3>
+
+            <div class="core-icons" aria-hidden="true">
+              <img
+                class="core-ic core-ic--sparkle2 animate"
+                data-animate="core-pop"
+                src="./img/core-ic-sparkle2.svg"
+                alt=""
+              />
+              <img
+                class="core-ic core-ic--music animate"
+                data-animate="core-pop"
+                src="./img/core-ic-music.svg"
+                alt=""
+              />
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="blue"><div class="box"></div></section>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/scrolla.jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
