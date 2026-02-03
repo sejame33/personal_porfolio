@@ -684,3 +684,355 @@ document.addEventListener("DOMContentLoaded", () => {
 
   items.forEach((el) => io.observe(el));
 });
+
+// section. WORKS
+document.addEventListener("DOMContentLoaded", () => {
+  // GSAP 없으면 중단
+  if (!window.gsap) return;
+
+  // ✅ 여기만 데이터로 갈아끼우면 됨
+  const slides = [
+    {
+      kicker: `<span class="works-kicker-bold">핵심 역량 01</span> - UXUI 디자인`,
+      title: "UXUI<br />DESIGN",
+      desc: `
+  핵심 역량, “UXUI DESIGN”를 제일 검증할 수 있는 사례로<br />
+  크레크레(CRE CRE)를 선정했습니다.<br />
+  <span class="indent">크레크레(CRECRE)는 모바일 앱으로,</span><br />
+  크레스티드 게코(도마뱀의 한 종류)의 먹이 주기를 계산해주고<br />
+  알림으로 크레 집사들을 돕습니다.<br />
+  <span class="indent">모바일 앱의 특성을 살리기 위해 디자인을 많이 연구하고 추가했습니다.</span>
+`,
+      shots: ["./img/p1-1.png", "./img/p1-2.png", "./img/p1-3.png"],
+      buttons: [
+        { label: "사이트 바로가기", url: "https://example.com" },
+        { label: "기획서 보기", url: "https://example.com/doc" },
+      ],
+    },
+    {
+      kicker: `<span class="works-kicker-bold">핵심 역량 02</span> - UXUI 디자인`,
+      title: "PROTOTYPE<br />SYSTEM",
+      desc: "프로젝트 2 설명. 인터랙션/프로토타입 설계 의도와 사용자 흐름을 강조합니다.",
+      shots: ["./img/p2-1.jpg", "./img/p2-2.jpg", "./img/p2-3.jpg"],
+      buttons: [
+        { label: "프로토타입 보기", url: "https://example.com/proto" },
+        { label: "프로세스 보기", url: "https://example.com/process" },
+      ],
+    },
+    {
+      kicker: `<span class="works-kicker-bold">핵심 역량 03</span> - UXUI 디자인`,
+      title: "VISUAL<br />DESIGN",
+      desc: "프로젝트 3 설명. 톤앤매너, 비주얼 시스템, 디자인 룰을 간단히 정리합니다.",
+      shots: ["./img/p3-1.jpg", "./img/p3-2.jpg", "./img/p3-3.jpg"],
+      buttons: [
+        { label: "작업물 보기", url: "https://example.com/work" },
+        { label: "디자인 가이드", url: "https://example.com/guide" },
+      ],
+    },
+  ];
+
+  // elements
+  const section = document.querySelector("#works");
+  if (!section) return;
+
+  const stack = section.querySelector("[data-stack]");
+  const shotImgs = section.querySelectorAll("img[data-shot]");
+  const kickerEl = section.querySelector("[data-kicker]");
+  const titleEl = section.querySelector("[data-title]");
+  const descEl = section.querySelector("[data-desc]");
+  const btn0 = section.querySelector('[data-btn="0"]');
+  const btn1 = section.querySelector('[data-btn="1"]');
+  const prevBtn = section.querySelector('[data-arrow="prev"]');
+  const nextBtn = section.querySelector('[data-arrow="next"]');
+
+  let index = 0;
+  let isAnimating = false;
+
+  const applySlide = (i) => {
+    const s = slides[i];
+    kickerEl.innerHTML = s.kicker;
+    titleEl.innerHTML = s.title;
+    descEl.innerHTML = s.desc;
+
+    shotImgs.forEach((img, n) => {
+      img.src = s.shots[n] || "";
+      img.alt = `${s.kicker} 이미지 ${n + 1}`;
+    });
+
+    if (s.buttons?.[0]) {
+      btn0.textContent = s.buttons[0].label;
+      btn0.href = s.buttons[0].url;
+      btn0.style.display = "inline-flex";
+    } else {
+      btn0.style.display = "none";
+    }
+
+    if (s.buttons?.[1]) {
+      btn1.textContent = s.buttons[1].label;
+      btn1.href = s.buttons[1].url;
+      btn1.style.display = "inline-flex";
+    } else {
+      btn1.style.display = "none";
+    }
+  };
+
+  // 초기 렌더
+  applySlide(index);
+
+  const go = (dir) => {
+    if (isAnimating) return;
+    isAnimating = true;
+
+    const nextIndex = (index + dir + slides.length) % slides.length;
+
+    // dir === 1 (next): 왼쪽으로 밀고 새 건 오른쪽에서 들어오게
+    const outX = dir === 1 ? -60 : 60;
+    const inX = dir === 1 ? 60 : -60;
+
+    const targetsOut = [
+      stack,
+      kickerEl,
+      titleEl,
+      descEl,
+      section.querySelector("[data-actions]"),
+    ];
+
+    const tl = gsap.timeline({
+      defaults: { ease: "power2.out" },
+      onComplete: () => {
+        index = nextIndex;
+        isAnimating = false;
+      },
+    });
+
+    // 1) OUT (현재 내용)
+    tl.to(targetsOut, { x: outX, opacity: 0, duration: 0.28 }, 0);
+
+    // 2) 교체 + IN 준비
+    tl.add(() => {
+      applySlide(nextIndex);
+      gsap.set(targetsOut, { x: inX, opacity: 0 });
+      // 이미지 3장은 순차로 들어오게(원하면)
+      gsap.set(stack.querySelectorAll(".works-shot"), { x: inX, opacity: 0 });
+    });
+
+    // 3) IN (새 내용)
+    tl.to(targetsOut, { x: 0, opacity: 1, duration: 0.34 }, 0.3);
+
+    // 3-1) 이미지 3장: 약간의 스태거로 더 예쁘게
+    tl.to(
+      stack.querySelectorAll(".works-shot"),
+      { x: 0, opacity: 1, duration: 0.38, stagger: 0.05 },
+      0.28,
+    );
+  };
+
+  prevBtn?.addEventListener("click", () => go(-1));
+  nextBtn?.addEventListener("click", () => go(1));
+
+  // 키보드 접근성(선택)
+  section.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft") go(-1);
+    if (e.key === "ArrowRight") go(1);
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (!window.gsap || !window.ScrollTrigger) return; // ✅ 이거 꼭
+  gsap.registerPlugin(ScrollTrigger);
+
+  ScrollTrigger.create({
+    trigger: "#works",
+    start: "top top",
+    end: "+=60%", // ← 이 값이 “얼마나 멈출지”
+    pin: true,
+    pinSpacing: true,
+  });
+
+  // (여기에 pin 코드)
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (!window.gsap || !window.ScrollTrigger) return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  // ✅ STICKY(service) 끝난 뒤부터 body 배경 변경
+  ScrollTrigger.create({
+    trigger: "#service", // 🔁 hero → sticky 섹션
+    start: "bottom bottom", // 🔑 sticky가 끝나는 순간
+    end: "bottom bottom",
+    onEnter: () =>
+      gsap.to(document.body, {
+        backgroundColor: "#ffffff",
+        duration: 0.4,
+        overwrite: "auto",
+      }),
+    onEnterBack: () =>
+      gsap.to(document.body, {
+        backgroundColor: "#336bec",
+        duration: 0.4,
+        overwrite: "auto",
+      }),
+    // markers: true,
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (!window.Swiper) return;
+
+  const swiper = new Swiper(".clone-swiper", {
+    centeredSlides: true,
+    centeredSlidesBounds: true,
+    spaceBetween: 25,
+    speed: 500,
+    slidesPerGroup: 1, // ✅ 항상 1장씩 이동
+    slidesPerGroupSkip: 0,
+    threshold: 10, // ✅ 살짝 드래그해야 넘어가게(한장 느낌 강화)
+    longSwipesRatio: 0.15, // ✅ 길게 쓸면 더 잘 넘어감
+    longSwipesMs: 200,
+    shortSwipes: true,
+
+    // ✅ 한 번에 딱 스냅되게
+    // (freeMode 쓰면 한장 느낌 사라짐 -> false 유지)
+    freeMode: false,
+
+    // initialSlide는 centeredSlides일 때 "중앙에 올 카드"로 쓰기 좋음
+    initialSlide: 2,
+
+    breakpoints: {
+      0: { slidesPerView: 1.05 },
+      480: { slidesPerView: 1.25 },
+      768: { slidesPerView: 2.1 },
+      1100: { slidesPerView: 3.1 },
+      1440: { slidesPerView: 4.1 },
+    },
+  });
+});
+// ✅ 커스텀 커서 (hover 시 보이고, 마우스 따라다님)
+const cursor = document.querySelector(".clone-cursor");
+const area = document.querySelector(".clone");
+const cards = area.querySelectorAll(".clone-card");
+
+const showCursor = () => cursor.classList.add("is-active");
+const hideCursor = () => cursor.classList.remove("is-active");
+
+area.addEventListener("mousemove", (e) => {
+  cursor.style.left = `${e.clientX}px`;
+  cursor.style.top = `${e.clientY}px`;
+});
+
+cards.forEach((card) => {
+  card.addEventListener("mouseenter", showCursor);
+  card.addEventListener("mouseleave", hideCursor);
+
+  card.addEventListener("click", () => {
+    const url = card.dataset.url;
+    if (url) window.open(url, "_blank", "noopener,noreferrer");
+  });
+});
+
+// section.SKILL
+document.addEventListener("DOMContentLoaded", () => {
+  const marquee = document.querySelector(".skills-marquee");
+  const track = marquee?.querySelector("[data-track]");
+  if (!marquee || !track) return;
+
+  let isDown = false;
+  let startX = 0;
+  let lastX = 0;
+
+  // 현재 transformX 읽기
+  const getX = () => {
+    const m = new DOMMatrixReadOnly(getComputedStyle(track).transform);
+    return m.m41; // translateX
+  };
+
+  // ✅ track의 실제 px 너비(= 1세트 + 1세트)
+  // 우리가 2세트를 넣었으므로, "반"이 1세트 폭
+  const getHalfWidth = () => {
+    // track의 전체 scrollWidth는 2세트 폭
+    return track.scrollWidth / 2;
+  };
+
+  // ✅ 무한처럼 보이게 wrap
+  const wrapX = (x) => {
+    const half = getHalfWidth();
+    // x가 너무 왼쪽/오른쪽으로 가면 half만큼 되돌려서 끊김 방지
+    if (x <= -half) x += half;
+    if (x >= 0) x -= half;
+    return x;
+  };
+
+  const setX = (x) => {
+    track.style.transform = `translateX(${wrapX(x)}px)`;
+  };
+
+  const onDown = (e) => {
+    isDown = true;
+    track.classList.add("is-paused");
+
+    // CSS 애니메이션 중이었으면, 현재 위치를 transform으로 고정
+    const cur = getX();
+    track.style.animation = "none";
+    track.style.transform = `translateX(${cur}px)`;
+
+    startX = e.clientX;
+    lastX = cur;
+  };
+
+  const onMove = (e) => {
+    if (!isDown) return;
+    const dx = e.clientX - startX;
+    setX(lastX + dx);
+  };
+
+  const onUp = () => {
+    if (!isDown) return;
+    isDown = false;
+
+    // 드래그 끝 위치를 기준으로 다시 자동으로 흐르게
+    const cur = getX();
+    track.style.transform = `translateX(${wrapX(cur)}px)`;
+
+    // ✅ 애니메이션 재개: transform 유지하면서 이어가려면
+    // CSS 애니메이션은 transform을 덮어쓰므로,
+    // "현재 위치에서 시작"하려면 CSS 변수 방식이 필요함.
+    // 간단히: 놓으면 자연스럽게 다시 처음부터 흐르도록 재시작
+    track.style.animation = "";
+    track.classList.remove("is-paused");
+    track.style.transform = ""; // CSS animation이 다시 담당
+  };
+
+  // 마우스
+  marquee.addEventListener("mousedown", onDown);
+  window.addEventListener("mousemove", onMove);
+  window.addEventListener("mouseup", onUp);
+
+  // 터치
+  marquee.addEventListener("touchstart", (e) => onDown(e.touches[0]), {
+    passive: true,
+  });
+  window.addEventListener("touchmove", (e) => onMove(e.touches[0]), {
+    passive: true,
+  });
+  window.addEventListener("touchend", onUp);
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const cursor = document.querySelector(".skills-cursor");
+  const area = document.querySelector(".skills-marquee"); // ✅ 마퀴 영역
+  if (!cursor || !area) return;
+
+  const showCursor = () => cursor.classList.add("is-active");
+  const hideCursor = () => cursor.classList.remove("is-active");
+
+  // ✅ 영역 들어오면 보이기 / 나가면 숨기기
+  area.addEventListener("mouseenter", showCursor);
+  area.addEventListener("mouseleave", hideCursor);
+
+  // ✅ 마우스 위치 따라가기
+  area.addEventListener("mousemove", (e) => {
+    cursor.style.left = `${e.clientX}px`;
+    cursor.style.top = `${e.clientY}px`;
+  });
+});

@@ -13,6 +13,10 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
   </head>
   <body>
     <!-- HEADER -->
@@ -31,7 +35,7 @@
     </header>
 
     <!-- section.HERO -->
-    <section class="hero" id="hero">
+    <section class="hero" id="home">
       <div class="hero-textbox">
         <p class="subtext">INTRODUCING SERVICE,</p>
         <h2 class="hero-title">UXUI DESIGNER<br /><span>SUNJIN LEE</span></h2>
@@ -781,6 +785,7 @@
       </div>
     </section>
 
+    <!-- section.CORE -->
     <section class="core" id="core">
       <div class="core-inner">
         <div class="core-head">
@@ -871,7 +876,537 @@
         </div>
       </div>
     </section>
-    <section class="blue"><div class="box"></div></section>
+
+    <!-- section.WORKS -->
+    <section class="works" id="works">
+      <div class="works-inner">
+        <!-- LEFT : 3 images -->
+        <div class="works-left" aria-label="프로젝트 이미지">
+          <div class="works-stack" data-stack>
+            <div class="works-shot works-shot--1">
+              <img data-shot="0" src="./img/p1-1.png" alt="" />
+            </div>
+            <div class="works-shot works-shot--2">
+              <img data-shot="1" src="./img/p1-2.png" alt="" />
+            </div>
+            <div class="works-shot works-shot--3">
+              <img data-shot="2" src="./img/p1-3.png" alt="" />
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT : text + buttons + arrows -->
+        <div class="works-right">
+          <p class="works-kicker" data-kicker>
+            <span class="works-kicker-bold">핵심 역량 01</span> - UXUI 디자인
+          </p>
+          <h2 class="works-title" data-title>UXUI<br />DESIGN</h2>
+          <p class="works-desc" data-desc>
+            핵심 역량, “UXUI DESIGN”를 제일 검증할 수 있는 사례로<br />
+            크레크레(CRE CRE)를 선정했습니다.<br />
+            &nbsp; 크레크레(CRECRE)는 모바일 앱으로,<br />
+            크레스티드 게코(도마뱀의 한 종류)의 먹이 주기를 계산해주고<br />
+            알림으로 크레 집사들을 돕습니다.<br />
+            &nbsp; 모바일 앱의 특성을 살리기 위해 디자인을 많이 연구하고
+            추가했습니다.
+          </p>
+
+          <div class="works-actions" data-actions>
+            <a
+              class="works-btn works-btn--primary"
+              data-btn="0"
+              href="#"
+              target="_blank"
+              rel="noreferrer"
+            >
+              사이트 바로가기
+            </a>
+            <a
+              class="works-btn works-btn--ghost"
+              data-btn="1"
+              href="#"
+              target="_blank"
+              rel="noreferrer"
+            >
+              기획서 보기
+            </a>
+          </div>
+
+          <div class="works-nav" aria-label="슬라이드 이동">
+            <button
+              class="works-arrow works-arrow--prev"
+              type="button"
+              data-arrow="prev"
+              aria-label="이전"
+            >
+              <img
+                class="arrow-img arrow-img--off"
+                src="./img/push-btn-left.svg"
+                alt=""
+              />
+              <img
+                class="arrow-img arrow-img--on"
+                src="./img/push-btn-left-on.svg"
+                alt=""
+              />
+            </button>
+            <button
+              class="works-arrow works-arrow--next"
+              type="button"
+              data-arrow="next"
+              aria-label="다음"
+            >
+              <img
+                class="arrow-img arrow-img--off"
+                src="./img/push-btn-right.svg"
+                alt=""
+              />
+              <img
+                class="arrow-img arrow-img--on"
+                src="./img/push-btn-right-on.svg"
+                alt=""
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- section.CLONE -->
+    <section class="clone" id="clone">
+      <div class="clone-inner">
+        <div class="clone-head">
+          <div class="clone-left">
+            <span class="clone-badge"
+              ><img src="./img/section-badge-6.svg" alt=""
+            /></span>
+            <h2 class="title">CLONE CODING</h2>
+          </div>
+          <p class="clone-desc">
+            진행했던 프로젝트 외에도 클론 코딩을 통해<br />
+            핵심 역량을 더 늘리고자 했습니다.
+          </p>
+        </div>
+
+        <!-- Swiper -->
+        <div class="clone-slider">
+          <div class="clone-viewport">
+            <div class="swiper clone-swiper">
+              <div class="swiper-wrapper">
+                <!-- 카드 1 -->
+                <div class="swiper-slide">
+                  <article
+                    class="clone-card animate"
+                    data-animate="clone-in"
+                    data-url="https://example.com"
+                  >
+                    <div class="clone-thumb">
+                      <img src="./img/clone-1.png" alt="clone 01" />
+                    </div>
+                    <div class="clone-meta">
+                      <p class="clone-name">
+                        YSTUDIO 와이스튜디오 웹사이트 클론 코딩
+                      </p>
+                      <p class="clone-date">2025.10.30</p>
+                    </div>
+                  </article>
+                </div>
+
+                <!-- 카드 2 -->
+                <div class="swiper-slide">
+                  <article
+                    class="clone-card animate"
+                    data-animate="clone-in"
+                    data-url="https://example.com"
+                  >
+                    <div class="clone-thumb">
+                      <img src="./img/clone-2.png" alt="clone 02" />
+                    </div>
+                    <div class="clone-meta">
+                      <p class="clone-name">
+                        YSTUDIO 와이스튜디오 웹사이트 클론 코딩
+                      </p>
+                      <p class="clone-date">2025.10.30</p>
+                    </div>
+                  </article>
+                </div>
+
+                <!-- 카드 3 -->
+                <div class="swiper-slide">
+                  <article
+                    class="clone-card animate"
+                    data-animate="clone-in"
+                    data-url="https://example.com"
+                  >
+                    <div class="clone-thumb">
+                      <img src="./img/clone-3.png" alt="clone 03" />
+                    </div>
+                    <div class="clone-meta">
+                      <p class="clone-name">
+                        YSTUDIO 와이스튜디오 웹사이트 클론 코딩
+                      </p>
+                      <p class="clone-date">2025.10.30</p>
+                    </div>
+                  </article>
+                </div>
+
+                <!-- 카드 4 -->
+                <div class="swiper-slide">
+                  <article
+                    class="clone-card animate"
+                    data-animate="clone-in"
+                    data-url="https://example.com"
+                  >
+                    <div class="clone-thumb">
+                      <img src="./img/clone-4.png" alt="clone 03" />
+                    </div>
+                    <div class="clone-meta">
+                      <p class="clone-name">
+                        YSTUDIO 와이스튜디오 웹사이트 클론 코딩
+                      </p>
+                      <p class="clone-date">2025.10.30</p>
+                    </div>
+                  </article>
+                </div>
+
+                <!-- 카드 5-->
+                <div class="swiper-slide">
+                  <article
+                    class="clone-card animate"
+                    data-animate="clone-in"
+                    data-url="https://example.com"
+                  >
+                    <div class="clone-thumb">
+                      <img src="./img/clone-5.png" alt="clone 03" />
+                    </div>
+                    <div class="clone-meta">
+                      <p class="clone-name">
+                        YSTUDIO 와이스튜디오 웹사이트 클론 코딩
+                      </p>
+                      <p class="clone-date">2025.10.30</p>
+                    </div>
+                  </article>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 커스텀 커서 -->
+        <div class="clone-cursor" aria-hidden="true">
+          <span class="clone-btn"
+            ><img src="./img/hover-arrow2.svg" alt=""
+          /></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- section.SKILL -->
+    <section class="skills" id="skills">
+      <div class="skills-inner">
+        <span class="skills-badge">
+          <img src="./img/section-badge-6.svg" alt="" />
+        </span>
+
+        <h2 class="title">SOFTWARE<br />SKILLS</h2>
+        <p class="skills-desc">
+          이 서비스의 핵심 역량의 기반이 되는 스킬들입니다.
+        </p>
+
+        <!-- marquee -->
+        <div
+          class="skills-marquee animate"
+          aria-label="software skills marquee"
+          data-animate="skills-in"
+        >
+          <div class="skills-track" data-track>
+            <!-- ✅ 1세트 -->
+            <div class="skills-row">
+              <img src="./img/skill-vs.svg" alt="VSCODE" />
+              <img src="./img/skill-css.svg" alt="CSS" />
+              <img src="./img/skill-html.svg" alt="HTML" />
+              <img src="./img/skill-js.svg" alt="JavaScript" />
+              <img src="./img/skill-react.svg" alt="React" />
+              <img src="./img/skill-git.svg" alt="Git" />
+              <img src="./img/skill-figma.svg" alt="Figma" />
+              <img src="./img/skill-ae.svg" alt="After Effects" />
+              <img src="./img/skill-pr.svg" alt="Premiere Pro" />
+              <img src="./img/skill-ps.svg" alt="Photoshop" />
+              <img src="./img/skill-ai.svg" alt="Illustrator" />
+              <img src="./img/skill-anti.svg" alt="AntiGravity" />
+              <img src="./img/skill-gpt.svg" alt="ChatGPT" />
+            </div>
+
+            <!-- ✅ 2세트(복제) : 끊김 없는 무한 루프용 -->
+            <div class="skills-row" aria-hidden="true">
+              <img src="./img/skill-vs.svg" alt="" />
+              <img src="./img/skill-css.svg" alt="" />
+              <img src="./img/skill-html.svg" alt="" />
+              <img src="./img/skill-js.svg" alt="" />
+              <img src="./img/skill-react.svg" alt="" />
+              <img src="./img/skill-git.svg" alt="" />
+              <img src="./img/skill-figma.svg" alt="" />
+              <img src="./img/skill-ae.svg" alt="" />
+              <img src="./img/skill-pr.svg" alt="" />
+              <img src="./img/skill-ps.svg" alt="" />
+              <img src="./img/skill-ai.svg" alt="" />
+              <img src="./img/skill-anti.svg" alt="" />
+              <img src="./img/skill-gpt.svg" alt="" />
+            </div>
+          </div>
+        </div>
+
+        <div class="skills-cursor" aria-hidden="true">
+          <span class="skills-btn">
+            <img src="./img/hover-arrow.svg" alt="" />
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- section.TEST -->
+    <section class="test" id="test">
+      <div class="test-inner">
+        <!-- 상단 라벨 -->
+        <div class="test-badge" aria-label="usability test tag">
+          <img src="./img/./section-badge-7.svg" alt="" />
+        </div>
+
+        <!-- 타이틀 -->
+        <h2 class="test-title">
+          <span class="test-title-bold">사용자</span>들은 서비스에 이렇게
+          반응했어요!
+        </h2>
+
+        <!-- 상단 데코 아이콘(원하면 이미지로 교체) -->
+        <span class="test-deco deco-left" aria-hidden="true"
+          ><img src="./img/test-sparkle.svg" alt=""
+        /></span>
+        <span class="test-deco deco-right" aria-hidden="true"
+          ><img src="/img/test-music.svg" alt=""
+        /></span>
+        <span class="test-deco deco-right2" aria-hidden="true"
+          ><img src="./img/test-hand.svg" alt=""
+        /></span>
+
+        <!-- 카드 3개 -->
+        <div class="test-grid">
+          <!-- 카드 1 -->
+          <article class="test-card">
+            <div class="test-illust">
+              <!-- 너 이미지로 교체 -->
+              <img src="./img/test-user-1.svg" alt="" />
+            </div>
+            <p class="test-role">5년차 백엔드 회사 종사자</p>
+            <p class="test-quote">
+              테스트 후 “이해가 빠르고 흐름이 자연스럽다”는 피드백을 남겼습니다.
+            </p>
+          </article>
+
+          <!-- 카드 2 -->
+          <article class="test-card">
+            <div class="test-illust">
+              <img src="./img/test-user-2.svg" alt="" />
+            </div>
+            <p class="test-role">경력 10년차 UXUI 강사</p>
+            <p class="test-quote">
+              “핵심이 잘 정리되어 있고 설득 포인트가 명확하다”는 의견을
+              주었습니다.
+            </p>
+          </article>
+
+          <!-- 카드 3 -->
+          <article class="test-card">
+            <div class="test-illust">
+              <img src="./img/test-user-3.svg" alt="" />
+            </div>
+            <p class="test-role">UXUI 취업 학원 종사자</p>
+            <p class="test-quote">
+              “처음 봐도 구조가 보이고 따라가기 쉬워서 좋다”는 반응이
+              있었습니다.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- section.RETROSPECTIVE -->
+    <section class="retro" id="retro">
+      <div class="retro-divider animate" data-animate="divider-on">
+        <img src="./img/retro-divider.svg" alt="" />
+      </div>
+      <div class="retro-inner">
+        <div class="retro-bg-wrap">
+          <!-- 타이틀 -->
+          <div class="retro-head">
+            <span class="retro-badge">
+              <img src="./img/section-badge-8.svg" alt="" />
+            </span>
+            <h2 class="title">RETROSPECTIVE</h2>
+            <p class="retro-sub">
+              이 섹션에서는 이 서비스를 기획하며 배운 점과,<br />다음 버전을
+              위해 남겨둔 과제를 정리합니다.
+            </p>
+          </div>
+
+          <!-- 배경 데코 (이미지로 바꿔도 됨) -->
+          <span class="retro-cloud c1" aria-hidden="true"></span>
+          <span class="retro-cloud c2" aria-hidden="true"></span>
+          <span class="retro-cloud c3" aria-hidden="true"></span>
+          <span class="retro-star s1" aria-hidden="true"></span>
+          <span class="retro-star s2" aria-hidden="true"></span>
+
+          <!-- 카드들 -->
+          <div class="retro-cards">
+            <article class="retro-card animate" data-animate="retro-in">
+              <h3 class="retro-card-title">What I Learned</h3>
+              <p class="retro-card-desc">
+                이 서비스를 기획하면서 배운점은,<br />
+                내용을 전달하는 방법은 다양하고<br />
+                고민을 해야되는 부부이라는 것입니다.
+              </p>
+            </article>
+
+            <article class="retro-card animate" data-animate="retro-in">
+              <h3 class="retro-card-title">What I Had Trouble With This</h3>
+              <p class="retro-card-desc">
+                이 서비스를 기획하면서 배운점은,<br />
+                내용을 전달하는 방법은 다양하고<br />
+                고민을 해야되는 부부이라는 것입니다.
+              </p>
+            </article>
+
+            <article class="retro-card animate" data-animate="retro-in">
+              <h3 class="retro-card-title">What I Want To Develop About</h3>
+              <p class="retro-card-desc">
+                이 서비스를 기획하면서 배운점은,<br />
+                내용을 전달하는 방법은 다양하고<br />
+                고민을 해야되는 부부이라는 것입니다.
+              </p>
+            </article>
+
+            <article class="retro-card animate" data-animate="retro-in">
+              <h3 class="retro-card-title">What Will I Do On The Next Step</h3>
+              <p class="retro-card-desc">
+                이 서비스를 기획하면서 배운점은,<br />
+                내용을 전달하는 방법은 다양하고<br />
+                고민을 해야되는 부부이라는 것입니다.
+              </p>
+            </article>
+          </div>
+
+          <!-- 캐릭터/구름 일러스트 -->
+          <div class="retro-illust" aria-hidden="true">
+            <img src="./img/retro-illust.svg" alt="" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- section.CONTACT -->
+    <section class="contact" id="contact">
+      <div class="contact-inner">
+        <!-- 상단 카피 -->
+        <div class="contact-top">
+          <span class="contact-star" aria-hidden="true"
+            ><img src="./img/contact-sticker.svg" alt=""
+          /></span>
+          <p class="contact-kicker">
+            이 서비스를 함께
+            <span class="contact-kicker-bold">발전시킬 팀</span>을 찾고
+            있습니다!
+          </p>
+        </div>
+
+        <!-- 메인 타이틀 -->
+        <div class="contact-title-wrap">
+          <span class="contact-badge">
+            <img src="./img/section-badge-8.svg" alt="" />
+          </span>
+          <h2 class="contact-title">CONTACT</h2>
+        </div>
+
+        <!-- 하단 패널 -->
+        <div class="contact-panel">
+          <!-- left -->
+          <div class="contact-col contact-col--left">
+            <h3 class="contact-col-title">My Socials</h3>
+
+            <div class="contact-socials">
+              <!-- 너가 가진 아이콘으로 교체 -->
+              <a class="contact-ico" href="#" aria-label="GitHub">
+                <img class="ico ico--base" src="./img/ico-github.svg" alt="" />
+                <img
+                  class="ico ico--active"
+                  src="./img/ico-github-active.svg"
+                  alt=""
+                />
+              </a>
+              <a class="contact-ico" href="#" aria-label="Instagram">
+                <img
+                  class="ico ico--base"
+                  src="./img/ico-instagram.svg"
+                  alt=""
+                />
+                <img
+                  class="ico ico--active"
+                  src="./img/ico-instagram-active.svg"
+                  alt=""
+                />
+              </a>
+              <a class="contact-ico" href="#" aria-label="Behance">
+                <img class="ico ico--base" src="./img/ico-behance.svg" alt="" />
+                <img
+                  class="ico ico--active"
+                  src="./img/ico-behance-active.svg"
+                  alt=""
+                />
+              </a>
+              <a class="contact-ico" href="#" aria-label="Link">
+                <img class="ico ico--base" src="./img/ico-link.svg" alt="" />
+                <img
+                  class="ico ico--active"
+                  src="./img/ico-behance-link-active.svg"
+                  alt=""
+                />
+              </a>
+            </div>
+          </div>
+
+          <!-- right -->
+          <div class="contact-col contact-col--right">
+            <h3 class="contact-col-title">My Contacts</h3>
+
+            <div class="contact-list">
+              <div class="contact-item">
+                <span class="contact-item-ico">
+                  <img src="./img/ico-user.svg" alt="" />
+                </span>
+                <span class="contact-item-text">sejame33</span>
+              </div>
+
+              <div class="contact-item">
+                <span class="contact-item-ico">
+                  <img src="./img/ico-mail.svg" alt="" />
+                </span>
+                <span class="contact-item-text">sejame33@gmail.com</span>
+              </div>
+            </div>
+
+            <p class="contact-address">
+              South Korea, Seoul Junglang-gu<br />
+              Yongmasan Road 669 (Shinnae Desian Apt 108-1502)
+            </p>
+          </div>
+        </div>
+        <div class="contact-bottom">
+          <p class="contact-mini left">Made in 2026. 01 - 02</p>
+          <p class="contact-mini middle">In The Purpose of Job Hunting</p>
+          <p class="contact-mini right">Website By Sunjin Lee</p>
+        </div>
+      </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/scrolla.jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
