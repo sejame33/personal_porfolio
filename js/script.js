@@ -1,4 +1,112 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const header = document.querySelector("header");
+  if (!header) return;
+
+  let lastY = window.scrollY;
+  const topThreshold = 10;
+  const deltaThreshold = 6;
+
+  // ✅ 스크롤이 결정하는 compact 여부
+  let shouldCompact = false;
+
+  // ✅ 마우스 올려져 있는지
+  let isHovering = false;
+
+  const applyState = () => {
+    header.classList.toggle("is-compact", shouldCompact && !isHovering);
+  };
+
+  // hover 시 full 버전 강제
+  header.addEventListener("mouseenter", () => {
+    isHovering = true;
+    applyState();
+  });
+
+  header.addEventListener("mouseleave", () => {
+    isHovering = false;
+    applyState();
+  });
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      const y = window.scrollY;
+      const diff = y - lastY;
+
+      // 맨 위 근처는 항상 full
+      if (y <= topThreshold) {
+        shouldCompact = false;
+        applyState();
+        lastY = y;
+        return;
+      }
+
+      if (Math.abs(diff) < deltaThreshold) return;
+
+      if (diff > 0) {
+        // 아래로 스크롤 → compact
+        shouldCompact = true;
+      } else {
+        // 위로 스크롤 → full
+        shouldCompact = false;
+      }
+
+      applyState();
+      lastY = y;
+    },
+    { passive: true },
+  );
+});
+
+(() => {
+  const hero = document.querySelector(".hero");
+  const btn = document.querySelector(".scroll-down-btn");
+  const line = document.querySelector(".scroll-down-btn .scroll-line");
+  if (!hero || !btn || !line) return;
+
+  let maxHeight = 0;
+  let ticking = false;
+
+  const measure = () => {
+    // 뷰포트 기준 좌표로 거리 계산
+    const heroRect = hero.getBoundingClientRect();
+    const btnRect = btn.getBoundingClientRect();
+
+    // 버튼 아래(선 시작점) ~ hero 바닥까지 거리(px)
+    const gap = 10; // CSS margin-top이 10px면 동일하게
+    maxHeight = Math.max(0, heroRect.bottom - (btnRect.bottom + gap));
+  };
+
+  const update = () => {
+    ticking = false;
+
+    const rect = hero.getBoundingClientRect();
+    const triggerRange = hero.offsetHeight * 0.8; // 너가 원한 빠른 채움 구간
+
+    let progress = -rect.top / triggerRange;
+    progress = Math.min(Math.max(progress, 0), 1);
+
+    line.style.height = `${progress * maxHeight}px`;
+  };
+
+  const onScroll = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  };
+
+  // 최초 측정
+  measure();
+  update();
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", () => {
+    measure();
+    update();
+  });
+})();
+
+document.addEventListener("DOMContentLoaded", () => {
   const scene = document.querySelector(".sticky-scene");
   const cards = document.querySelectorAll(".card");
   if (!scene || cards.length === 0) return;
@@ -685,61 +793,124 @@ document.addEventListener("DOMContentLoaded", () => {
   items.forEach((el) => io.observe(el));
 });
 
-// section. WORKS
+// section. WORKS (동적 shots + 슬라이드 전환 + pin)
+// section. WORKS (동적 shots + 슬라이드 전환 + pin) — ✅ 최종 안정본
+// section. WORKS (동적 shots + 슬라이드 전환 + pin) — ✅ XY 안 무너지는 최종 JS
+// section. WORKS (동적 shots + 슬라이드 전환 + pin) — ✅ 로딩/디코딩 대기까지 포함 최종 안정본
 document.addEventListener("DOMContentLoaded", () => {
-  // GSAP 없으면 중단
-  if (!window.gsap) return;
+  if (!window.gsap || !window.ScrollTrigger) return;
+  gsap.registerPlugin(ScrollTrigger);
 
-  // ✅ 여기만 데이터로 갈아끼우면 됨
   const slides = [
     {
       kicker: `<span class="works-kicker-bold">핵심 역량 01</span> - UXUI 디자인`,
       title: "UXUI<br />DESIGN",
       desc: `
-  핵심 역량, “UXUI DESIGN”를 제일 검증할 수 있는 사례로<br />
-  크레크레(CRE CRE)를 선정했습니다.<br />
-  <span class="indent">크레크레(CRECRE)는 모바일 앱으로,</span><br />
-  크레스티드 게코(도마뱀의 한 종류)의 먹이 주기를 계산해주고<br />
-  알림으로 크레 집사들을 돕습니다.<br />
-  <span class="indent">모바일 앱의 특성을 살리기 위해 디자인을 많이 연구하고 추가했습니다.</span>
-`,
-      shots: ["./img/p1-1.png", "./img/p1-2.png", "./img/p1-3.png"],
+        UX/UI 디자인 핵심 역량 검증 사례로
+        NOVA 앱 팀 프로젝트를 선정했습니다.<br />
+        <span class="indent">이 프로젝트에서는 디자인과 개발을 분리된 과정이 아닌, React 기반 구현을 전제로 UX와 UI를 함께 설계했습니다.</span>
+        
+        <br />특히 컴포넌트 구조와 사용자 상태(state) 개념을 적극적으로 활용해
+        <br />실제 동작 방식을 고려한 디자인을 진행할 수 있었습니다.
+
+        <span class="indent">이 프로젝트를 통해, UX/UI 디자인을 개발 구조에 맞게 구체화하고,</span>
+        <br />실제 서비스 흐름 속에서 구현하는 역량을 검증하고자 했습니다.
+      `,
+      shots: [
+        { src: "./img/p0-1.png", x: 8, y: 14, z: 3, r: 0 },
+        { src: "./img/p0-2.png", x: 40, y: -11, z: 2, r: 0 },
+        { src: "./img/p0-3.png", x: 40, y: 50, z: 1, r: 0 },
+        { src: "./img/p0-4.png", x: 72, y: 32, z: 0, r: 0 },
+      ],
       buttons: [
-        { label: "사이트 바로가기", url: "https://example.com" },
-        { label: "기획서 보기", url: "https://example.com/doc" },
+        {
+          label: "사이트 바로가기",
+          url: "https://tubi-team-project-rho.vercel.app/",
+        },
+        {
+          label: "기획서 보기",
+          url: "https://www.figma.com/proto/2LQV5mTCJR3TJkbFYBAiJt/NOVA-UX-CASE-STUDY?node-id=0-1&t=HJK62TiqWVzmsKVM-1",
+        },
       ],
     },
     {
-      kicker: `<span class="works-kicker-bold">핵심 역량 02</span> - UXUI 디자인`,
-      title: "PROTOTYPE<br />SYSTEM",
-      desc: "프로젝트 2 설명. 인터랙션/프로토타입 설계 의도와 사용자 흐름을 강조합니다.",
-      shots: ["./img/p2-1.jpg", "./img/p2-2.jpg", "./img/p2-3.jpg"],
+      kicker: `<span class="works-kicker-bold">핵심 역량 02</span> - 문제 정의와 해결`,
+      title: "PROBLEM<br />SOLVING",
+      desc: `
+        문제 정의와 해결 역량 검증 사례로
+        1MILLION DANCE STUDIO 웹사이트 리뉴얼 팀 프로젝트를 선정했습니다.<br />
+
+        <span class="indent"> 이 프로젝트는 신규 제작이 아닌 리뉴얼 프로젝트로,<br />기존 서비스의 문제를 파악하고 정의하는 과정이 무엇보다 중요했습니다. 기존 웹사이트는 정보 구조가 직관적이지 않고,<br />수강까지의 흐름이 복잡해 사용자가 원하는 클래스를 찾고 신청하기 어려운 상태였습니다.</span><br /> <span class="indent"> 이에 따라 사용자가 수강 정보를 쉽게 이해하고, 자연스럽게 클래스 신청까지 이어질 수 있도록 구조를 단순화하고<br />사용자 흐름을 재설계하는 방향으로 문제를 해결했습니다. </span>
+      `,
+      shots: [
+        { src: "./img/p1-1.png", x: -59, y: -6, z: 2, r: 0 },
+        { src: "./img/p1-2.png", x: 27, y: 10, z: 1, r: 0 },
+        { src: "./img/p1-3.png", x: 6, y: 60, z: 0, r: 0 },
+      ],
       buttons: [
-        { label: "프로토타입 보기", url: "https://example.com/proto" },
-        { label: "프로세스 보기", url: "https://example.com/process" },
+        {
+          label: "사이트 바로가기",
+          url: "https://yunjioh.github.io/1million/",
+        },
+        {
+          label: "기획서 보기",
+          url: "https://www.figma.com/proto/rSCKNnOJKIZzwlsYK3wliR/Untitled?node-id=1-354&t=AqNuYRu6L8L4h4eF-1",
+        },
       ],
     },
     {
-      kicker: `<span class="works-kicker-bold">핵심 역량 03</span> - UXUI 디자인`,
-      title: "VISUAL<br />DESIGN",
-      desc: "프로젝트 3 설명. 톤앤매너, 비주얼 시스템, 디자인 룰을 간단히 정리합니다.",
-      shots: ["./img/p3-1.jpg", "./img/p3-2.jpg", "./img/p3-3.jpg"],
+      kicker: `<span class="works-kicker-bold">핵심 역량 03</span> - 새로운 아이디어`,
+      title: "NEW<br />IDEAS",
+      desc: `
+        새로운 아이디어의 역량 검증 사례로
+        CRECRE(크레크레) 앱 프로젝트를 선정했습니다.<br />
+
+        <span class="indent">
+          이 프로젝트는 기존과 유사한 서비스가 아닌,
+          다소 생소하지만 이미 시장이 형성되어 있는
+          크레스티드 게코(도마뱀)<br />전용 앱을 주제로 기획되었습니다.
+        </span><br />
+
+        <span class="indent">
+          반려동물 앱이라는 익숙한 카테고리 안에서,
+          아직 충분히 다뤄지지 않은 사용자와 문제를 발견하고<br />
+          새로운 관점으로 서비스를 정의하고자 했습니다.
+        </span><br />
+
+        <span class="indent">
+          이를 통해 항상 새로운 대상을 탐색하고,
+          기존 시장을 다른 시선으로 재해석해
+          서비스로 확장하는 사고 방식을<br />보여주고자 했습니다.
+        </span>
+      `,
+      shots: [
+        { src: "./img/p2-1.png", x: 10, y: -12, z: 4, r: 0 },
+        { src: "./img/p2-2.png", x: 10, y: 48, z: 3, r: 0 },
+        { src: "./img/p2-3.png", x: 41, y: 20, z: 2, r: 0 },
+        { src: "./img/p2-4.png", x: 72, y: -4, z: 1, r: 0 },
+        { src: "./img/p2-5.png", x: 72, y: 56, z: 0, r: 0 },
+      ],
       buttons: [
-        { label: "작업물 보기", url: "https://example.com/work" },
-        { label: "디자인 가이드", url: "https://example.com/guide" },
+        {
+          label: "프로토타입 보기",
+          url: "https://www.figma.com/proto/XVaoNRJBsSkgmKXafQe8zy/Untitled?node-id=1-1621&t=XlV4wjqqdOqslltg-1",
+        },
+        {
+          label: "기획서 보기",
+          url: "https://www.figma.com/proto/XVaoNRJBsSkgmKXafQe8zy/CRECRE-PERSONAL-APP?node-id=1-10949&t=XlV4wjqqdOqslltg-1",
+        },
       ],
     },
   ];
 
-  // elements
   const section = document.querySelector("#works");
   if (!section) return;
 
   const stack = section.querySelector("[data-stack]");
-  const shotImgs = section.querySelectorAll("img[data-shot]");
   const kickerEl = section.querySelector("[data-kicker]");
   const titleEl = section.querySelector("[data-title]");
   const descEl = section.querySelector("[data-desc]");
+  const actionsEl = section.querySelector("[data-actions]");
   const btn0 = section.querySelector('[data-btn="0"]');
   const btn1 = section.querySelector('[data-btn="1"]');
   const prevBtn = section.querySelector('[data-arrow="prev"]');
@@ -747,6 +918,61 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let index = 0;
   let isAnimating = false;
+  let activeTween = null;
+
+  const stripTags = (html) => String(html).replace(/<[^>]*>/g, "");
+
+  // ✅ 이미지 로딩/디코딩 캐시 (전환 때 튀는 원인 제거)
+  const imgCache = new Map();
+  const ensureImageReady = (src) => {
+    if (!src) return Promise.resolve();
+    if (imgCache.has(src)) return imgCache.get(src);
+
+    const p = new Promise((resolve) => {
+      const im = new Image();
+      im.onload = () => resolve();
+      im.onerror = () => resolve(); // 에러여도 전환이 멈추면 UX가 더 나빠서 resolve
+      im.src = src;
+
+      // decode 지원 브라우저면 decode까지 기다리면 더 안정적
+      if (im.decode) {
+        im.decode()
+          .then(resolve)
+          .catch(() => resolve());
+      }
+    });
+
+    imgCache.set(src, p);
+    return p;
+  };
+
+  const ensureSlideImagesReady = (slideIndex) => {
+    const s = slides[slideIndex];
+    const srcs = (s?.shots || []).map((x) => x.src);
+    return Promise.all(srcs.map(ensureImageReady));
+  };
+
+  // ✅ shots DOM 생성 (works-shot은 위치 고정 / inner만 애니메이션)
+  const renderShots = (shots = [], kickerTextForAlt = "") => {
+    stack.innerHTML = shots
+      .map(
+        (s, i) => `
+          <div class="works-shot"
+            style="
+              --x:${s.x ?? 50}%;
+              --y:${s.y ?? 50}%;
+              --z:${s.z ?? i};
+              --r:${s.r ?? 0}deg;
+            "
+          >
+            <div class="works-shot-inner">
+              <img src="${s.src}" alt="${kickerTextForAlt} 이미지 ${i + 1}" />
+            </div>
+          </div>
+        `,
+      )
+      .join("");
+  };
 
   const applySlide = (i) => {
     const s = slides[i];
@@ -754,10 +980,7 @@ document.addEventListener("DOMContentLoaded", () => {
     titleEl.innerHTML = s.title;
     descEl.innerHTML = s.desc;
 
-    shotImgs.forEach((img, n) => {
-      img.src = s.shots[n] || "";
-      img.alt = `${s.kicker} 이미지 ${n + 1}`;
-    });
+    renderShots(s.shots, stripTags(s.kicker));
 
     if (s.buttons?.[0]) {
       btn0.textContent = s.buttons[0].label;
@@ -776,8 +999,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  // 초기 렌더
-  applySlide(index);
+  const getShotInners = () =>
+    Array.from(stack.querySelectorAll(".works-shot-inner"));
+
+  // ✅ 초기 렌더 전: 0번 슬라이드 이미지 미리 준비
+  ensureSlideImagesReady(0).finally(() => {
+    applySlide(0);
+  });
 
   const go = (dir) => {
     if (isAnimating) return;
@@ -785,71 +1013,77 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const nextIndex = (index + dir + slides.length) % slides.length;
 
-    // dir === 1 (next): 왼쪽으로 밀고 새 건 오른쪽에서 들어오게
     const outX = dir === 1 ? -60 : 60;
     const inX = dir === 1 ? 60 : -60;
 
-    const targetsOut = [
-      stack,
-      kickerEl,
-      titleEl,
-      descEl,
-      section.querySelector("[data-actions]"),
-    ];
+    const targets = [stack, kickerEl, titleEl, descEl, actionsEl];
+    const currentInners = getShotInners();
 
-    const tl = gsap.timeline({
-      defaults: { ease: "power2.out" },
-      onComplete: () => {
-        index = nextIndex;
-        isAnimating = false;
+    if (activeTween) activeTween.kill();
+    gsap.killTweensOf([...targets, ...currentInners]);
+
+    // 1) OUT
+    activeTween = gsap.to([...targets, ...currentInners], {
+      x: outX,
+      opacity: 0,
+      duration: 0.28,
+      ease: "power2.out",
+      onComplete: async () => {
+        // ✅ 핵심: 다음 슬라이드 이미지가 준비될 때까지 기다렸다가 교체/IN
+        await ensureSlideImagesReady(nextIndex);
+
+        // 2) 교체
+        applySlide(nextIndex);
+
+        const nextInners = getShotInners();
+
+        // 텍스트만 clearProps (shots에는 절대 clearProps 금지)
+        gsap.set(targets, { clearProps: "transform,opacity" });
+
+        // IN 시작 상태
+        gsap.set(targets, { x: inX, opacity: 0 });
+        gsap.set(nextInners, { x: inX, opacity: 0 });
+
+        // 3) IN (텍스트)
+        gsap.to(targets, {
+          x: 0,
+          opacity: 1,
+          duration: 0.34,
+          ease: "power2.out",
+        });
+
+        // 3-1) IN (shots)
+        gsap.to(nextInners, {
+          x: 0,
+          opacity: 1,
+          duration: 0.38,
+          ease: "power2.out",
+          stagger: 0.05,
+          onComplete: () => {
+            index = nextIndex;
+            isAnimating = false;
+            activeTween = null;
+          },
+        });
       },
     });
-
-    // 1) OUT (현재 내용)
-    tl.to(targetsOut, { x: outX, opacity: 0, duration: 0.28 }, 0);
-
-    // 2) 교체 + IN 준비
-    tl.add(() => {
-      applySlide(nextIndex);
-      gsap.set(targetsOut, { x: inX, opacity: 0 });
-      // 이미지 3장은 순차로 들어오게(원하면)
-      gsap.set(stack.querySelectorAll(".works-shot"), { x: inX, opacity: 0 });
-    });
-
-    // 3) IN (새 내용)
-    tl.to(targetsOut, { x: 0, opacity: 1, duration: 0.34 }, 0.3);
-
-    // 3-1) 이미지 3장: 약간의 스태거로 더 예쁘게
-    tl.to(
-      stack.querySelectorAll(".works-shot"),
-      { x: 0, opacity: 1, duration: 0.38, stagger: 0.05 },
-      0.28,
-    );
   };
 
   prevBtn?.addEventListener("click", () => go(-1));
   nextBtn?.addEventListener("click", () => go(1));
 
-  // 키보드 접근성(선택)
   section.addEventListener("keydown", (e) => {
     if (e.key === "ArrowLeft") go(-1);
     if (e.key === "ArrowRight") go(1);
   });
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  if (!window.gsap || !window.ScrollTrigger) return; // ✅ 이거 꼭
-  gsap.registerPlugin(ScrollTrigger);
 
   ScrollTrigger.create({
     trigger: "#works",
     start: "top top",
-    end: "+=60%", // ← 이 값이 “얼마나 멈출지”
+    end: "+=60%",
     pin: true,
     pinSpacing: true,
   });
-
-  // (여기에 pin 코드)
 });
 
 document.addEventListener("DOMContentLoaded", () => {
