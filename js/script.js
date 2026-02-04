@@ -806,12 +806,15 @@ document.addEventListener("DOMContentLoaded", () => {
       kicker: `<span class="works-kicker-bold">핵심 역량 01</span> - UXUI 디자인`,
       title: "UXUI<br />DESIGN",
       desc: `
-        핵심 역량, “UXUI DESIGN”를 제일 검증할 수 있는 사례로<br />
-        크레크레(CRE CRE)를 선정했습니다.<br />
-        <span class="indent">크레크레(CRECRE)는 모바일 앱으로,</span><br />
-        크레스티드 게코(도마뱀의 한 종류)의 먹이 주기를 계산해주고<br />
-        알림으로 크레 집사들을 돕습니다.<br />
-        <span class="indent">모바일 앱의 특성을 살리기 위해 디자인을 많이 연구하고 추가했습니다.</span>
+        UX/UI 디자인 핵심 역량 검증 사례로
+        NOVA 앱 팀 프로젝트를 선정했습니다.<br />
+        <span class="indent">이 프로젝트에서는 디자인과 개발을 분리된 과정이 아닌, React 기반 구현을 전제로 UX와 UI를 함께 설계했습니다.</span>
+        
+        <br />특히 컴포넌트 구조와 사용자 상태(state) 개념을 적극적으로 활용해
+        <br />실제 동작 방식을 고려한 디자인을 진행할 수 있었습니다.
+
+        <span class="indent">이 프로젝트를 통해, UX/UI 디자인을 개발 구조에 맞게 구체화하고,</span>
+        <br />실제 서비스 흐름 속에서 구현하는 역량을 검증하고자 했습니다.
       `,
       shots: [
         { src: "./img/p0-1.png", x: 8, y: 14, z: 3, r: 0 },
@@ -834,9 +837,10 @@ document.addEventListener("DOMContentLoaded", () => {
       kicker: `<span class="works-kicker-bold">핵심 역량 02</span> - 문제 정의와 해결`,
       title: "PROBLEM<br />SOLVING",
       desc: `
-        핵심 역량, “PROBLEM SOLVING”을 검증할 수 있는 사례로<br />
-        프로젝트 02를 선정했습니다.<br />
-        <span class="indent">여기에 프로젝트 설명을 넣어주세요.</span>
+        문제 정의와 해결 역량 검증 사례로
+        1MILLION DANCE STUDIO 웹사이트 리뉴얼 팀 프로젝트를 선정했습니다.<br />
+
+        <span class="indent"> 이 프로젝트는 신규 제작이 아닌 리뉴얼 프로젝트로,<br />기존 서비스의 문제를 파악하고 정의하는 과정이 무엇보다 중요했습니다. 기존 웹사이트는 정보 구조가 직관적이지 않고,<br />수강까지의 흐름이 복잡해 사용자가 원하는 클래스를 찾고 신청하기 어려운 상태였습니다.</span><br /> <span class="indent"> 이에 따라 사용자가 수강 정보를 쉽게 이해하고, 자연스럽게 클래스 신청까지 이어질 수 있도록 구조를 단순화하고<br />사용자 흐름을 재설계하는 방향으로 문제를 해결했습니다. </span>
       `,
       shots: [
         { src: "./img/p1-1.png", x: -59, y: -6, z: 2, r: 0 },
@@ -858,12 +862,26 @@ document.addEventListener("DOMContentLoaded", () => {
       kicker: `<span class="works-kicker-bold">핵심 역량 03</span> - 새로운 아이디어`,
       title: "NEW<br />IDEAS",
       desc: `
-        핵심 역량, “NEW IDEAS” 를 제일 검증할 수 있는 사례로<br />
-        크레크레(CRE CRE)를 선정했습니다.<br />
-        <span class="indent">크레크레(CRECRE)는 모바일 앱으로,</span><br />
-        크레스티드 게코(도마뱀의 한 종류)의 먹이 주기를 계산해주고<br />
-        알림으로 크레 집사들을 돕습니다.<br />
-        <span class="indent">모바일 앱의 특성을 살리기 위해 디자인을 많이 연구하고 추가했습니다.</span>
+        새로운 아이디어의 역량 검증 사례로
+        CRECRE(크레크레) 앱 프로젝트를 선정했습니다.<br />
+
+        <span class="indent">
+          이 프로젝트는 기존과 유사한 서비스가 아닌,
+          다소 생소하지만 이미 시장이 형성되어 있는
+          크레스티드 게코(도마뱀)<br />전용 앱을 주제로 기획되었습니다.
+        </span><br />
+
+        <span class="indent">
+          반려동물 앱이라는 익숙한 카테고리 안에서,
+          아직 충분히 다뤄지지 않은 사용자와 문제를 발견하고<br />
+          새로운 관점으로 서비스를 정의하고자 했습니다.
+        </span><br />
+
+        <span class="indent">
+          이를 통해 항상 새로운 대상을 탐색하고,
+          기존 시장을 다른 시선으로 재해석해
+          서비스로 확장하는 사고 방식을<br />보여주고자 했습니다.
+        </span>
       `,
       shots: [
         { src: "./img/p2-1.png", x: 10, y: -12, z: 4, r: 0 },
