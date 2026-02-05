@@ -1394,8 +1394,23 @@ header.is-compact .header-wrap .lnb-wrap ul {
 /* 구름(이미지 2개) */
 .recruit-clouds {
   position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+
   bottom: -5%;
   height: 1100px;
+
+  pointer-events: none;
+  z-index: 2;
+}
+.recruit-cloud--left {
+  left: 0;
+  bottom: 0;
+}
+.recruit-cloud--right {
+  right: 0;
+  bottom: 0;
 }
 
 /* 공통 */
@@ -1442,13 +1457,6 @@ header.is-compact .header-wrap .lnb-wrap ul {
 .recruit-clouds.clouds-on .recruit-cloud--right {
   animation-delay: 0.3s, 1s;
 }
-
-.blue .box {
-  display: block;
-  width: 100%;
-  height: 1000px;
-}
-
 /* ===== REVIEW ===== */
 .review-section {
   background: #336bec;
@@ -1853,11 +1861,9 @@ header.is-compact .header-wrap .lnb-wrap ul {
 }
 
 .problem-main-mask {
-  /* 네가 마스크 쓰고 있다면 그대로 */
-  overflow: hidden;
-
-  /* 초기 상태 */
-  transform: translateY(160px); /* 밑에 내려둠 */
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%) translateY(160px);
   will-change: transform;
 }
 
@@ -1868,16 +1874,18 @@ header.is-compact .header-wrap .lnb-wrap ul {
 /* 키프레임 */
 @keyframes cloudRiseUp {
   from {
-    transform: translateY(200px);
+    transform: translateX(-50%) translateY(200px);
   }
   to {
-    transform: translateY(0);
+    transform: translateX(-50%) translateY(0);
   }
 }
 
 .problem-main-cloud {
-  height: auto;
   display: block;
+  width: 100vw; /* 기본은 살짝 넘치게 */
+  max-width: none; /* ⭐ 이거 중요 */
+  height: auto;
 }
 
 .problem-objects {
@@ -2165,7 +2173,7 @@ header.is-compact .header-wrap .lnb-wrap ul {
 
 /* 시계판 */
 .clock-face {
-  width: min(92vmin, 980px);
+  width: min(92vmin, 92vw, 980px);
   height: auto;
   display: block;
   opacity: 1;
@@ -2176,7 +2184,7 @@ header.is-compact .header-wrap .lnb-wrap ul {
 .clock-hand {
   position: absolute;
   left: 50%;
-  width: min(92vmin, 980px); /* ✅ face랑 같은 사이즈로 맞추면 편함 */
+  width: min(92vmin, 92vw, 980px); /* ✅ face랑 같은 사이즈로 맞추면 편함 */
   height: auto;
   transform: translate(-50%, 0) rotate(0deg);
   transform-origin: 50% 50%;
@@ -3160,7 +3168,17 @@ header.is-compact .header-wrap .lnb-wrap ul {
 }
 
 .retro-divider {
-  transform: translateY(150px);
+  position: relative;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%) translateY(150px); /* 기존 rise 유지 */
+  overflow: hidden;
+}
+
+.retro-divider img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .retro-divider.divider-on {
@@ -3169,10 +3187,10 @@ header.is-compact .header-wrap .lnb-wrap ul {
 
 @keyframes divider-rise {
   from {
-    transform: translateY(150px);
+    transform: translateX(-50%) translateY(150px);
   }
   to {
-    transform: translateY(0);
+    transform: translateX(-50%) translateY(0);
   }
 }
 
@@ -3433,7 +3451,7 @@ header.is-compact .header-wrap .lnb-wrap ul {
 
 .contact-badge {
   position: absolute;
-  left: 50.7%;
+  left: 50%;
   top: -46px;
   transform: translateX(-50%) rotate(-17deg);
 }
@@ -3444,7 +3462,7 @@ header.is-compact .header-wrap .lnb-wrap ul {
 
 .contact-title {
   margin: 0;
-  font-size: 383px;
+  font-size: clamp(120px, 19.95vw, 383px);
   line-height: 0.9;
   letter-spacing: -3px;
   font-weight: 900;
