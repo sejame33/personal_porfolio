@@ -807,7 +807,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "UXUI<br />DESIGN",
       desc: `
         UX/UI 디자인 핵심 역량 검증 사례로
-        NOVA 앱 팀 프로젝트를 선정했습니다.<br />
+        팀장으로 진행했던 NOVA 앱 팀 프로젝트를 선정했습니다.<br />
         NOVA는 버츄얼 아이돌 팬덤 앱으로, 버츄얼 아이돌과 팬을 하나로 연결해주는 걸 목표로 합니다.
         
         <span class="indent">이 프로젝트에서는 디자인과 개발을 분리된 과정이 아닌, React 기반 구현을 전제로 UX와 UI를 함께 설계했습니다.</span>
@@ -845,7 +845,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "PROBLEM<br />SOLVING",
       desc: `
         문제 정의와 해결 역량 검증 사례로
-        1MILLION DANCE STUDIO 웹사이트 리뉴얼 팀 프로젝트를 선정했습니다.<br />
+        팀장으로 진행했던 1MILLION DANCE STUDIO 웹사이트 리뉴얼 팀 프로젝트를<br />선정했습니다.
         원밀리언은 10–20대를 중심으로 높은 인지도를 가진 댄스 스튜디오로, 공식 웹사이트는 수강권 정보 제공과<br />수강 신청을 주요 목적으로 합니다.
 
         <span class="indent"> 이 프로젝트는 신규 제작이 아닌 리뉴얼 프로젝트로,<br />기존 서비스의 문제를 파악하고 정의하는 과정이 무엇보다 중요했습니다. 기존 웹사이트는 정보 구조가 직관적이지 않고,<br />수강까지의 흐름이 복잡해 사용자가 원하는 클래스를 찾고 신청하기 어려운 상태였습니다.</span><br /> <span class="indent"> 이에 따라 사용자가 수강 정보를 쉽게 이해하고, 자연스럽게 클래스 신청까지 이어질 수 있도록 구조를 단순화하고<br />사용자 흐름을 재설계하는 방향으로 문제를 해결했습니다. </span>
@@ -876,7 +876,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "NEW IDEAS",
       desc: `
         새로운 아이디어의 역량 검증 사례로
-        CRECRE(크레크레) 앱 프로젝트를 선정했습니다.<br />
+        CRECRE(크레크레) 개인 앱 프로젝트를 선정했습니다.<br />
         크레크레는 크레스티드 게코(도마뱀) 집사들을 위한 앱으로, 2-3일이라는 기억하기 힘든 크레의 먹이주기를<br />기록해주고 알림을 해줍니다.
 
         <span class="indent">
@@ -1317,5 +1317,19 @@ document.addEventListener("DOMContentLoaded", () => {
   area.addEventListener("mousemove", (e) => {
     cursor.style.left = `${e.clientX}px`;
     cursor.style.top = `${e.clientY}px`;
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const topBtn = document.querySelector(".top-btn");
+  if (!topBtn) return;
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 400) topBtn.classList.add("is-show");
+    else topBtn.classList.remove("is-show");
+  });
+
+  topBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   });
 });

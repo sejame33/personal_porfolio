@@ -1398,7 +1398,7 @@ header.is-compact .header-wrap .lnb-wrap ul {
   transform: translateX(-50%);
   width: 100vw;
 
-  bottom: -5%;
+  bottom: -1%;
   height: 1100px;
 
   pointer-events: none;
@@ -3683,4 +3683,94 @@ header.is-compact .header-wrap .lnb-wrap ul {
     border-right: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.7);
   }
+}
+
+/* TOP 버튼 기본 위치/노출 */
+.top-btn {
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+
+  background: transparent;
+  display: grid;
+  place-items: center;
+
+  overflow: hidden;
+  z-index: 1000;
+
+  /* 스크롤 등장용(원하면) */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.top-btn.is-show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* 아이콘 이미지 2장 겹치기 */
+.top-btn .ico {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  display: block;
+}
+
+/* ✅ 1) 흰 원: scale로 채우기 */
+.top-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #000;
+
+  transform: scale(0);
+  transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+  z-index: 1; /* base 위, active 아래 */
+}
+
+.top-btn:hover::before {
+  transform: scale(1);
+}
+
+.top-btn:not(:hover)::before {
+  transition-duration: 0.3s; /* hover-out 빠르게 */
+}
+
+/* base */
+.top-btn .ico--base {
+  z-index: 0;
+  opacity: 1;
+  transition: opacity 0.06s ease;
+}
+
+/* active */
+.top-btn .ico--active {
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.08s ease;
+}
+
+/* hover 시: 딜레이 후 아이콘 교체 */
+.top-btn:hover .ico--active {
+  opacity: 1;
+  transition-delay: 0.26s;
+}
+
+.top-btn:hover .ico--base {
+  opacity: 0;
+  transition-delay: 0.26s;
 }
