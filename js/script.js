@@ -834,6 +834,11 @@ document.addEventListener("DOMContentLoaded", () => {
           url: "https://www.figma.com/proto/2LQV5mTCJR3TJkbFYBAiJt/NOVA-UX-CASE-STUDY?node-id=0-1&t=HJK62TiqWVzmsKVM-1",
         },
       ],
+      contrib: [
+        { label: "기획", value: 80 },
+        { label: "디자인", value: 70 },
+        { label: "개발", value: 90 },
+      ],
     },
     {
       kicker: `<span class="works-kicker-bold">핵심 역량 02</span> - 문제 정의와 해결`,
@@ -860,10 +865,15 @@ document.addEventListener("DOMContentLoaded", () => {
           url: "https://www.figma.com/proto/rSCKNnOJKIZzwlsYK3wliR/Untitled?node-id=1-354&t=AqNuYRu6L8L4h4eF-1",
         },
       ],
+      contrib: [
+        { label: "기획", value: 90 },
+        { label: "디자인", value: 80 },
+        { label: "개발", value: 70 },
+      ],
     },
     {
       kicker: `<span class="works-kicker-bold">핵심 역량 03</span> - 새로운 아이디어`,
-      title: "NEW<br />IDEAS",
+      title: "NEW IDEAS",
       desc: `
         새로운 아이디어의 역량 검증 사례로
         CRECRE(크레크레) 앱 프로젝트를 선정했습니다.<br />
@@ -904,6 +914,11 @@ document.addEventListener("DOMContentLoaded", () => {
           url: "https://www.figma.com/proto/XVaoNRJBsSkgmKXafQe8zy/CRECRE-PERSONAL-APP?node-id=1-10949&t=XlV4wjqqdOqslltg-1",
         },
       ],
+      contrib: [
+        { label: "기획", value: 100 },
+        { label: "디자인", value: 100 },
+        { label: "개발", value: 100 },
+      ],
     },
   ];
 
@@ -919,6 +934,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const btn1 = section.querySelector('[data-btn="1"]');
   const prevBtn = section.querySelector('[data-arrow="prev"]');
   const nextBtn = section.querySelector('[data-arrow="next"]');
+  const contribEl = section.querySelector("[data-contrib]");
 
   let index = 0;
   let isAnimating = false;
@@ -978,6 +994,34 @@ document.addEventListener("DOMContentLoaded", () => {
       .join("");
   };
 
+  const renderContrib = (items = []) => {
+    if (!contribEl) return;
+
+    contribEl.innerHTML = (items || [])
+      .map(
+        (it) => `
+        <div class="contrib-row">
+          <span class="contrib-label">${it.label}</span>
+          <div class="contrib-track" aria-hidden="true">
+            <div class="contrib-fill" data-fill style="--v:${it.value}"></div>
+          </div>
+          <span class="contrib-value">${it.value}%</span>
+        </div>
+      `,
+      )
+      .join("");
+
+    // ✅ 바 애니메이션 (0 -> 목표치)
+    const fills = Array.from(contribEl.querySelectorAll("[data-fill]"));
+    gsap.set(fills, { width: "0%" });
+    gsap.to(fills, {
+      width: (i, el) => `${Number(el.style.getPropertyValue("--v")) || 0}%`,
+      duration: 0.5,
+      ease: "power2.out",
+      stagger: 0.06,
+    });
+  };
+
   const applySlide = (i) => {
     const s = slides[i];
     kickerEl.innerHTML = s.kicker;
@@ -985,6 +1029,7 @@ document.addEventListener("DOMContentLoaded", () => {
     descEl.innerHTML = s.desc;
 
     renderShots(s.shots, stripTags(s.kicker));
+    renderContrib(s.contrib || []);
 
     if (s.buttons?.[0]) {
       btn0.textContent = s.buttons[0].label;
@@ -1020,7 +1065,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const outX = dir === 1 ? -60 : 60;
     const inX = dir === 1 ? 60 : -60;
 
-    const targets = [stack, kickerEl, titleEl, descEl, actionsEl];
+    const targets = [stack, kickerEl, titleEl, descEl, actionsEl, contribEl];
     const currentInners = getShotInners();
 
     if (activeTween) activeTween.kill();

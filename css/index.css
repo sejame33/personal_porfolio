@@ -2461,13 +2461,13 @@ header.is-compact .header-wrap .lnb-wrap ul {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 80%;
+  height: 85%;
 }
 
 .works-kicker {
   font-size: 20px;
   color: #1e1e1e;
-  margin-bottom: 80px;
+  margin-bottom: 20px;
   font-family: "Pretendard", sans-serif;
   letter-spacing: -1px;
 }
@@ -2634,6 +2634,53 @@ header.is-compact .header-wrap .lnb-wrap ul {
 .works-arrow:hover .arrow-img--off {
   opacity: 0;
   transition-delay: 0.26s;
+}
+
+/* ===== WORKS CONTRIBUTION ===== */
+.works-contrib {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 24px 0 36px; /* actions 아래, nav 위 간격 */
+  width: 100%;
+  max-width: 300px; /* 필요하면 조절 */
+}
+
+.contrib-row {
+  display: grid;
+  grid-template-columns: 40px 1fr 34px; /* 라벨 / 바 / 퍼센트 */
+  align-items: center;
+  gap: 14px;
+}
+
+.contrib-label {
+  font-size: 14px;
+  color: #9c9c9c;
+  font-family: "Pretendard", sans-serif;
+  letter-spacing: -0.5px;
+}
+
+.contrib-track {
+  height: 6px;
+  background: #e6e6e6;
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.contrib-fill {
+  height: 100%;
+  width: 0%;
+  background: #000;
+  border-radius: 999px;
+  transform-origin: left center;
+}
+
+.contrib-value {
+  font-size: 14px;
+  color: #9c9c9c;
+  font-family: "Pretendard", sans-serif;
+  text-align: right;
 }
 /* ===== CLONE ===== */
 .clone {
