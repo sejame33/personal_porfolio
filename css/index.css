@@ -1362,7 +1362,7 @@ header.is-compact .header-wrap .lnb-wrap ul {
   display: block;
   transform: rotate(-17deg);
   position: absolute;
-  left: 40px;
+  left: -30px;
   bottom: 110px;
 }
 
@@ -1765,11 +1765,11 @@ header.is-compact .header-wrap .lnb-wrap ul {
 /* 타이틀 */
 .problem-title {
   text-align: center;
-  font-size: 140px;
+  font-size: 170px;
   line-height: 0.9;
   letter-spacing: -3px;
   font-weight: 700;
-  margin-top: 40px;
+  margin-top: 100px;
 }
 
 /* 작은 구름들 */
