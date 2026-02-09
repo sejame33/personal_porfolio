@@ -1495,7 +1495,7 @@ header.is-compact .header-wrap .lnb-wrap ul {
   right: 100px;
   top: 8px;
   font-size: 18px;
-  color: #204088;
+  color: #142c64;
   text-align: right;
   line-height: 1.3;
   font-weight: 400;
@@ -3272,7 +3272,7 @@ header.is-compact .header-wrap .lnb-wrap ul {
 .retro-sub {
   margin: 24px 0 0;
   font-size: 18px;
-  color: #204088;
+  color: #142c64;
   line-height: 1.3;
   letter-spacing: -1px;
 }
