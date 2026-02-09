@@ -208,6 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
 })();
 
 // behind
+// behind (safe: only kills triggers created in this block)
 document.addEventListener("DOMContentLoaded", () => {
   if (!window.gsap || !window.ScrollTrigger) return;
   gsap.registerPlugin(ScrollTrigger);
@@ -221,106 +222,226 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!section || !viewport || !track || panels.length === 0) return;
 
-  const getMaxX = () => {
-    const tr = getComputedStyle(track);
-    const pr = parseFloat(tr.paddingRight) || 0; // ✅ track padding-right 읽기
-    const safety = 100; // ⭐ 40~120 사이로 조절 (일단 60 추천)
+  const mqMobile = window.matchMedia("(max-width: 500px)");
 
-    // ✅ scrollWidth는 track padding 포함. 그래도 마지막이 1~2px 모자랄 수 있어서 safety 더함
-    return Math.max(
-      0,
-      Math.ceil(track.scrollWidth - viewport.clientWidth + safety),
-    );
-  };
+  let moveTween = null;
+  let pinST = null;
+  let cleanupFns = []; // panel triggers kill용
 
-  const moveTween = gsap.to(track, {
-    x: () => -getMaxX(),
-    ease: "none",
-    paused: true,
-  });
+  const killBehind = () => {
+    // ✅ behind에서 만든 패널 트리거들 kill
+    cleanupFns.forEach((fn) => fn());
+    cleanupFns = [];
 
-  const st = ScrollTrigger.create({
-    trigger: section,
-    start: "top top",
-    end: () => "+=" + (getMaxX() + window.innerHeight * 0.8),
-    pin: true,
-    pinSpacing: true,
-    scrub: 1,
-    animation: moveTween,
-    invalidateOnRefresh: true,
-  });
-
-  // ✅ 패널 등장(너가 쓰던 그대로)
-  panels.forEach((panel, i) => {
-    const card = panel.querySelector(".bh-card");
-    const sticker = panel.querySelector(".bh-sticker");
-    if (!card) return;
-
-    const fromY = i % 2 === 0 ? -140 : 140;
-
-    gsap.set(card, { opacity: 0, y: fromY });
-    if (sticker) {
-      gsap.set(sticker, {
-        opacity: 0,
-        y: fromY * 0.5,
-        scale: 0.85,
-        rotate: -10,
-      });
+    // ✅ pin + moveTween kill
+    if (pinST) {
+      pinST.kill();
+      pinST = null;
+    }
+    if (moveTween) {
+      moveTween.kill();
+      moveTween = null;
     }
 
-    gsap.to(card, {
-      opacity: 1,
-      y: 0,
-      duration: 0.55,
-      ease: "power2.out",
-      immediateRender: false,
-      scrollTrigger: {
+    // ✅ 트랙 이동 잔상 제거
+    gsap.set(track, { clearProps: "transform" });
+  };
+
+  const addPanelRevealVertical = () => {
+    panels.forEach((panel) => {
+      const card = panel.querySelector(".bh-card");
+      const sticker = panel.querySelector(".bh-sticker");
+      if (!card) return;
+
+      gsap.set(card, { opacity: 0, y: 60 });
+      if (sticker)
+        gsap.set(sticker, { opacity: 0, y: 20, scale: 0.9, rotate: -10 });
+
+      const st1 = ScrollTrigger.create({
+        trigger: panel,
+        start: "top 85%",
+        onEnter: () =>
+          gsap.to(card, {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            ease: "power2.out",
+          }),
+        onLeaveBack: () =>
+          gsap.to(card, {
+            opacity: 0,
+            y: 60,
+            duration: 0.3,
+            ease: "power2.out",
+          }),
+      });
+
+      let st2 = null;
+      if (sticker) {
+        st2 = ScrollTrigger.create({
+          trigger: panel,
+          start: "top 85%",
+          onEnter: () =>
+            gsap.to(sticker, {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              rotate: -8,
+              duration: 0.45,
+              ease: "power2.out",
+            }),
+          onLeaveBack: () =>
+            gsap.to(sticker, {
+              opacity: 0,
+              y: 20,
+              scale: 0.9,
+              rotate: -10,
+              duration: 0.3,
+              ease: "power2.out",
+            }),
+        });
+      }
+
+      cleanupFns.push(() => {
+        st1.kill();
+        if (st2) st2.kill();
+      });
+    });
+  };
+
+  const addPanelRevealHorizontal = () => {
+    panels.forEach((panel, i) => {
+      const card = panel.querySelector(".bh-card");
+      const sticker = panel.querySelector(".bh-sticker");
+      if (!card) return;
+
+      const fromY = i % 2 === 0 ? -140 : 140;
+
+      gsap.set(card, { opacity: 0, y: fromY });
+      if (sticker) {
+        gsap.set(sticker, {
+          opacity: 0,
+          y: fromY * 0.5,
+          scale: 0.85,
+          rotate: -10,
+        });
+      }
+
+      const t1 = gsap.to(card, {
+        opacity: 1,
+        y: 0,
+        duration: 0.55,
+        ease: "power2.out",
+        paused: true,
+      });
+
+      const st1 = ScrollTrigger.create({
         trigger: panel,
         containerAnimation: moveTween,
         start: "left 55%",
-        end: "left 55%",
         toggleActions: "play none none reverse",
-      },
-    });
+        onEnter: () => t1.play(),
+        onLeaveBack: () => t1.reverse(),
+      });
 
-    if (sticker) {
-      gsap.to(sticker, {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        rotate: -8,
-        duration: 0.45,
-        ease: "power2.out",
-        immediateRender: false,
-        scrollTrigger: {
+      let t2 = null;
+      let st2 = null;
+      if (sticker) {
+        t2 = gsap.to(sticker, {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          rotate: -8,
+          duration: 0.45,
+          ease: "power2.out",
+          paused: true,
+        });
+
+        st2 = ScrollTrigger.create({
           trigger: panel,
           containerAnimation: moveTween,
           start: "left 55%",
-          end: "left 55%",
           toggleActions: "play none none reverse",
-        },
+          onEnter: () => t2.play(),
+          onLeaveBack: () => t2.reverse(),
+        });
+      }
+
+      cleanupFns.push(() => {
+        st1.kill();
+        t1.kill();
+        if (st2) st2.kill();
+        if (t2) t2.kill();
       });
-    }
-  });
+    });
+  };
 
-  // ✅ 핵심: 이미지 로드 후 scrollWidth가 바뀌면 마지막 카드가 잘리니까 반드시 refresh
-  const imgs = track.querySelectorAll("img");
-  const waitImages = () =>
-    Promise.all(
-      [...imgs].map((img) =>
-        img.complete
-          ? Promise.resolve()
-          : new Promise((res) => {
-              img.addEventListener("load", res, { once: true });
-              img.addEventListener("error", res, { once: true });
-            }),
-      ),
-    );
+  const setupMobile = () => {
+    killBehind(); // 혹시 데스크탑 상태였다면 정리
+    addPanelRevealVertical();
+    ScrollTrigger.refresh();
+  };
 
-  waitImages().then(() => {
-    ScrollTrigger.refresh(); // ✅ 이거 때문에 마지막 카드가 해결되는 경우가 많음
-  });
+  const setupDesktop = () => {
+    killBehind(); // 혹시 모바일 상태였다면 정리
 
+    const getMaxX = () => {
+      const safety = 100;
+      return Math.max(
+        0,
+        Math.ceil(track.scrollWidth - viewport.clientWidth + safety),
+      );
+    };
+
+    moveTween = gsap.to(track, {
+      x: () => -getMaxX(),
+      ease: "none",
+      paused: true,
+    });
+
+    pinST = ScrollTrigger.create({
+      id: "behind-pin",
+      trigger: section,
+      start: "top top",
+      end: () => "+=" + (getMaxX() + window.innerHeight * 0.8),
+      pin: true,
+      pinSpacing: true,
+      scrub: 1,
+      animation: moveTween,
+      invalidateOnRefresh: true,
+    });
+
+    addPanelRevealHorizontal();
+
+    // ✅ 이미지 로드 후 refresh (마지막 카드 잘림 방지)
+    const imgs = track.querySelectorAll("img");
+    const waitImages = () =>
+      Promise.all(
+        [...imgs].map((img) =>
+          img.complete
+            ? Promise.resolve()
+            : new Promise((res) => {
+                img.addEventListener("load", res, { once: true });
+                img.addEventListener("error", res, { once: true });
+              }),
+        ),
+      );
+
+    waitImages().then(() => ScrollTrigger.refresh());
+    ScrollTrigger.refresh();
+  };
+
+  const init = () => {
+    if (mqMobile.matches) setupMobile();
+    else setupDesktop();
+  };
+
+  init();
+
+  // ✅ 뷰포트 변경(500px 경계)에서만 갈아끼우기
+  mqMobile.addEventListener("change", init);
+
+  // ✅ 같은 모드 내 리사이즈는 refresh만 (성능)
   window.addEventListener("resize", () => ScrollTrigger.refresh());
 });
 
