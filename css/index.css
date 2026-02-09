@@ -579,7 +579,7 @@ header.is-compact .header-wrap .lnb-wrap ul {
 }
 
 /* 반응형 */
-@media (max-width: 390px) {
+@media (max-width: 500px) {
   header {
     display: none;
   }
@@ -733,7 +733,7 @@ header.is-compact .header-wrap .lnb-wrap ul {
   top: 68%;
 }
 
-@media (max-width: 390px) {
+@media (max-width: 500px) {
   .sticky-center .title {
     font-size: 12vw;
   }
