@@ -186,6 +186,7 @@ header {
     "Noto Sans KR",
     sans-serif;
   font-weight: 700;
+  margin-top: 2px;
 }
 
 .header-wrap .lnb-wrap {
@@ -237,6 +238,10 @@ header.is-compact .header-wrap .lnb-wrap ul {
   display: none;
 }
 
+.lnb {
+  margin-top: 5px;
+}
+
 .lnb a.lnb-link {
   position: relative;
   display: inline-block;
@@ -257,11 +262,6 @@ header.is-compact .header-wrap .lnb-wrap ul {
 .lnb a .lnb-text {
   display: block;
   height: 1.2em;
-}
-
-/* 두 번째 줄(복제)은 아래에 위치 */
-.lnb a .lnb-text.is-clone {
-  /* 필요하면 색이나 스타일 살짝 다르게 가능 */
 }
 
 /* ✅ hover 시 위로 한 줄 만큼 올려서 교체 */
