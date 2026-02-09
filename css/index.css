@@ -578,6 +578,79 @@ header.is-compact .header-wrap .lnb-wrap ul {
   will-change: height;
 }
 
+/* 반응형 */
+@media (max-width: 390px) {
+  header {
+    display: none;
+  }
+  .hero {
+    padding-top: 0;
+  }
+  .hero .hero-textbox .subtext {
+    font-size: 16px;
+    margin-bottom: 50px;
+  }
+  .hero .hero-textbox .hero-title {
+    font-size: 10vw;
+    line-height: 1.1;
+  }
+  .hero .hero-textbox .hero-title span {
+    font-size: 14vw;
+  }
+  .hero .hero-textbox .hero-deco.a {
+    width: 25%;
+    left: 15%;
+    top: 27%;
+  }
+  .hero .hero-textbox .hero-deco.b {
+    width: 20%;
+    left: 31%;
+    top: 90%;
+  }
+  .hero .hero-textbox .hero-deco.c {
+    width: 30%;
+    right: 13%;
+    top: 58%;
+  }
+  .hero .hero-char .hero-char-img {
+    width: 80%;
+    margin-right: 0px;
+  }
+  .hero .hero-cloud.a {
+    width: 26%;
+    top: 62%;
+  }
+  .hero .hero-cloud.b {
+    top: 8%;
+    left: 15%;
+    width: 15%;
+  }
+  .hero .hero-cloud.c {
+    width: 20%;
+    top: 40%;
+  }
+  .hero .hero-char .hero-char-arrow {
+    display: none;
+  }
+  .hero .cloud-wrap .hero-bg-cloud.a {
+    width: 73%;
+    bottom: -8%;
+  }
+  .hero .cloud-wrap .hero-bg-cloud.b {
+    width: 73%;
+    bottom: -8%;
+  }
+  .hero .cloud-wrap .scroll-down-btn {
+    margin-top: 100px;
+    margin-bottom: 180px;
+    font-size: 10px;
+    padding: 14px 30px;
+  }
+  .scroll-down-btn .scroll-line {
+    width: 3px;
+  }
+}
+
 /* section.STICKY */
 .sticky-scene {
   position: relative;
@@ -610,6 +683,10 @@ header.is-compact .header-wrap .lnb-wrap ul {
   margin-top: 36px;
   letter-spacing: -1px;
   line-height: 1.3;
+}
+
+.sticky-scene .sticky-center .desc .second {
+  display: none;
 }
 
 .sticky-scene .sticky-center .desc span {
@@ -654,6 +731,51 @@ header.is-compact .header-wrap .lnb-wrap ul {
 .sticky-scene .cards-layer .card--br {
   right: 15%;
   top: 68%;
+}
+
+@media (max-width: 390px) {
+  .sticky-center .title {
+    font-size: 12vw;
+  }
+  .sticky-scene .sticky-center .badge {
+    width: 30%;
+    margin-right: 90px;
+    margin-bottom: 4px;
+  }
+  .sticky-scene .sticky-center .badge img {
+    width: 100%;
+  }
+  .sticky-scene .sticky-center .desc {
+    font-size: 14px;
+  }
+  .sticky-scene .sticky-center .desc .second {
+    display: block;
+  }
+  .sticky-scene .cards-layer .card {
+    width: 100%;
+  }
+  .sticky-scene .cards-layer .card--tl {
+    left: 0;
+  }
+  .sticky-scene .cards-layer .card--tr {
+    right: 0;
+  }
+  .sticky-scene .cards-layer .card--bl {
+    left: 0;
+  }
+  .sticky-scene .cards-layer .card--br {
+    right: 0;
+  }
+  .sticky-scene .cards-layer .card .thumb {
+    width: 100%;
+  }
+  .sticky-scene .cards-layer .card img {
+    width: 100%;
+  }
+  .sticky-scene .cards-layer .card .label {
+    width: 100%;
+    font-size: 16px;
+  }
 }
 
 /* section.ABOUT-INTRO */
