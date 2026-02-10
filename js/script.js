@@ -924,43 +924,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const slides = [
     {
-      kicker: `<span class="works-kicker-bold">핵심 역량 01</span> - UXUI 디자인`,
-      title: "UXUI<br />DESIGN",
-      desc: `
-       UX/UI 역량을 보여주기 위해 팀장으로 진행한 NOVA 팬덤 앱 프로젝트를 선정했습니다.<br />
-        <span class="indent">초기 기획 단계에서 가장 크게 느낀 문제는 기능이 많음에도 불구하고,<br />사용자가 무엇을 해야 하는지 명확하지 않다는 점이었습니다. 콘텐츠 소비, 팬 활동, 굿즈 구매가 각각 존재했지만<br />
-        하나의 흐름으로 연결되지 않아 참여 경험이 단절되어 있었습니다.</span>
-        
-        <span class="indent">저는 이를 단순 화면 개선이 아닌, “팬의 행동 여정을 재설계하는 문제”로 정의했습니다.</span>
-        
-        <span class="indent">이를 해결하기 위해 팬 활동을 단계별(입문 – 참여 – 확장)로 구조화하고, 각 단계에서 필요한 정보와 행동을 중심으로<br />화면 흐름을 재구성했습니다. 특히 사용자의 활동 상태에 따라 노출되는 콘텐츠와 주요 CTA가 달라지도록<br />정책을 설계해, 자연스럽게 다음 행동으로 이어지도록 만들었습니다.</span>
-
-        <span class="indent">이 프로젝트를 통해 저는 디자인을 시각적인 결과물이 아니라, 사용자의 행동을 설계하는 구조적 문제 해결 과정으로<br />접근하는 방식을 확립할 수 있었습니다.</span>
-      `,
-      shots: [
-        { src: "./img/p0-1.png", x: 8, y: 14, z: 3, r: 0 },
-        { src: "./img/p0-2.png", x: 40, y: -11, z: 2, r: 0 },
-        { src: "./img/p0-3.png", x: 40, y: 50, z: 1, r: 0 },
-        { src: "./img/p0-4.png", x: 72, y: 32, z: 0, r: 0 },
-      ],
-      buttons: [
-        {
-          label: "사이트 바로가기",
-          url: "https://tubi-team-project-rho.vercel.app/",
-        },
-        {
-          label: "기획서 보기",
-          url: "https://www.figma.com/proto/2LQV5mTCJR3TJkbFYBAiJt/NOVA-UX-CASE-STUDY?node-id=0-1&t=HJK62TiqWVzmsKVM-1",
-        },
-      ],
-      contrib: [
-        { label: "기획", value: 80 },
-        { label: "디자인", value: 70 },
-        { label: "개발", value: 90 },
-      ],
-    },
-    {
-      kicker: `<span class="works-kicker-bold">핵심 역량 02</span> - 문제 정의와 해결`,
+      kicker: `<span class="works-kicker-bold">핵심 역량 01</span> - 문제 정의와 해결`,
       title: "PROBLEM<br />SOLVING",
       desc: `
         문제 정의와 해결 역량을 보여주기 위해 팀장으로 진행한 1MILLION DANCE STUDIO<br /> 웹사이트 리뉴얼 프로젝트를 선정했습니다.
@@ -994,6 +958,42 @@ document.addEventListener("DOMContentLoaded", () => {
         { label: "기획", value: 90 },
         { label: "디자인", value: 80 },
         { label: "개발", value: 70 },
+      ],
+    },
+    {
+      kicker: `<span class="works-kicker-bold">핵심 역량 02</span> - UXUI 디자인`,
+      title: "UXUI<br />DESIGN",
+      desc: `
+       UX/UI 역량을 보여주기 위해 팀장으로 진행한 NOVA 팬덤 앱 프로젝트를 선정했습니다.<br />
+        <span class="indent">초기 기획 단계에서 가장 크게 느낀 문제는 기능이 많음에도 불구하고,<br />사용자가 무엇을 해야 하는지 명확하지 않다는 점이었습니다. 콘텐츠 소비, 팬 활동, 굿즈 구매가 각각 존재했지만<br />
+        하나의 흐름으로 연결되지 않아 참여 경험이 단절되어 있었습니다.</span>
+        
+        <span class="indent">저는 이를 단순 화면 개선이 아닌, “팬의 행동 여정을 재설계하는 문제”로 정의했습니다.</span>
+        
+        <span class="indent">이를 해결하기 위해 팬 활동을 단계별(입문 – 참여 – 확장)로 구조화하고, 각 단계에서 필요한 정보와 행동을 중심으로<br />화면 흐름을 재구성했습니다. 특히 사용자의 활동 상태에 따라 노출되는 콘텐츠와 주요 CTA가 달라지도록<br />정책을 설계해, 자연스럽게 다음 행동으로 이어지도록 만들었습니다.</span>
+
+        <span class="indent">이 프로젝트를 통해 저는 디자인을 시각적인 결과물이 아니라, 사용자의 행동을 설계하는 구조적 문제 해결 과정으로<br />접근하는 방식을 확립할 수 있었습니다.</span>
+      `,
+      shots: [
+        { src: "./img/p0-1.png", x: 8, y: 14, z: 3, r: 0 },
+        { src: "./img/p0-2.png", x: 40, y: -11, z: 2, r: 0 },
+        { src: "./img/p0-3.png", x: 40, y: 50, z: 1, r: 0 },
+        { src: "./img/p0-4.png", x: 72, y: 32, z: 0, r: 0 },
+      ],
+      buttons: [
+        {
+          label: "사이트 바로가기",
+          url: "https://tubi-team-project-rho.vercel.app/",
+        },
+        {
+          label: "기획서 보기",
+          url: "https://www.figma.com/proto/2LQV5mTCJR3TJkbFYBAiJt/NOVA-UX-CASE-STUDY?node-id=0-1&t=HJK62TiqWVzmsKVM-1",
+        },
+      ],
+      contrib: [
+        { label: "기획", value: 80 },
+        { label: "디자인", value: 70 },
+        { label: "개발", value: 90 },
       ],
     },
     {
