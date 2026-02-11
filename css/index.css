@@ -1288,7 +1288,8 @@ header.is-compact .header-wrap .lnb-wrap ul {
 }
 
 .bh-endpad {
-  width: 0;
+  width: 320px;
+  flex: 0 0 320px;
 }
 
 @media (max-width: 500px) {
