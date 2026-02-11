@@ -656,8 +656,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const section = document.querySelector("#recruit-section");
 const clouds = document.querySelector(".recruit-clouds");
+const recruitMqMobile = window.matchMedia("(max-width: 500px)");
 
 function onScroll() {
+  if (!section || !clouds) return;
   const vh = window.innerHeight;
   const sRect = section.getBoundingClientRect();
 
@@ -665,7 +667,8 @@ function onScroll() {
   const passed = Math.min(Math.max(-sRect.top, 0), total);
   const progress = total > 0 ? passed / total : 0; // 0~1
 
-  if (progress >= 0.75) {
+  const triggerAt = recruitMqMobile.matches ? 0 : 0.75;
+  if (progress >= triggerAt) {
     clouds.classList.add("clouds-on");
   } else {
     clouds.classList.remove("clouds-on");
