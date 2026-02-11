@@ -3373,7 +3373,7 @@ header.is-compact .header-wrap .lnb-wrap ul {
   }
   .works-desc {
     font-size: 14px;
-    margin-bottom: 18px;
+    margin-bottom: 40px;
   }
   .works-actions {
     flex-wrap: wrap;
@@ -3403,7 +3403,7 @@ header.is-compact .header-wrap .lnb-wrap ul {
   .works-item {
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 24px;
   }
   .works-item-media {
     overflow: hidden;
@@ -3427,6 +3427,7 @@ header.is-compact .header-wrap .lnb-wrap ul {
   }
   .works-item-body .works-title {
     font-size: 14vw;
+    margin-bottom: 40px;
   }
 }
 
@@ -4803,6 +4804,9 @@ header.is-compact .header-wrap .lnb-wrap ul {
     gap: 10px;
     padding: 20px 16px;
   }
+  .contact-bottom .contact-mini {
+    font-size: 12px;
+  }
 }
 /* TOP 버튼 기본 ?�치/?�출 */
 .top-btn {
@@ -4898,7 +4902,7 @@ header.is-compact .header-wrap .lnb-wrap ul {
   .top-btn {
     width: 40px;
     height: 40px;
-    right: 20px;
-    bottom: 20px;
+    right: 36px;
+    bottom: 36px;
   }
 }
