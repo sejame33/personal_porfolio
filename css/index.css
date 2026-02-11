@@ -1856,7 +1856,7 @@ header.is-compact .header-wrap .lnb-wrap ul {
   .recruit-stage {
     flex-direction: column;
     position: relative;
-    margin-bottom: 50px;
+    margin-bottom: 0;
   }
   .recruit-paper {
     width: 88%;
@@ -1896,7 +1896,7 @@ header.is-compact .header-wrap .lnb-wrap ul {
   .recruit-insight {
     position: absolute;
     width: 100%;
-    bottom: 10%;
+    bottom: 13%;
   }
   .recruit-insight .tag {
     display: inline-block;
@@ -1916,11 +1916,12 @@ header.is-compact .header-wrap .lnb-wrap ul {
   }
   .recruit-clouds {
     height: 320px;
-    bottom: -10%;
+    bottom: -4%;
   }
   .recruit-cloud {
-    width: 115%;
+    width: 105%;
   }
+  .recruit-cloud
 }
 /* ===== REVIEW ===== */
 .review-section {
