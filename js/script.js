@@ -1062,11 +1062,98 @@ document.addEventListener("DOMContentLoaded", () => {
   const nextBtn = section.querySelector('[data-arrow="next"]');
   const contribEl = section.querySelector("[data-contrib]");
 
+  const isMobile = window.matchMedia("(max-width: 500px)").matches;
+
   let index = 0;
   let isAnimating = false;
   let activeTween = null;
 
   const stripTags = (html) => String(html).replace(/<[^>]*>/g, "");
+
+  const renderMobileList = () => {
+    const inner = section.querySelector(".works-inner");
+    if (!inner) return;
+
+    inner.classList.add("works-inner--list");
+    inner.innerHTML = slides
+      .map((s, i) => {
+        const shots = s.shots || [];
+        const shotsHtml = shots
+          .map(
+            (shot, shotIndex) => `
+              <img
+                src="${shot.src}"
+                alt="${stripTags(s.kicker)} 이미지 ${shotIndex + 1}"
+                class="${i === 2 && shotIndex === 0 ? "is-hidden" : ""}"
+              />
+            `,
+          )
+          .join("");
+        const buttons = (s.buttons || [])
+          .map(
+            (b) => `
+              <a
+                class="works-btn"
+                href="${b.url}"
+                target="_blank"
+                rel="noreferrer"
+              >
+                ${b.label}
+              </a>
+            `,
+          )
+          .join("");
+
+        const contrib = (s.contrib || [])
+          .map(
+            (it) => `
+              <div class="contrib-row">
+                <span class="contrib-label">${it.label}</span>
+                <div class="contrib-track" aria-hidden="true">
+                  <div class="contrib-fill" style="width:${it.value}%"></div>
+                </div>
+                <span class="contrib-value">${it.value}%</span>
+              </div>
+            `,
+          )
+          .join("");
+
+        return `
+          <article class="works-item" data-works-item="${i}">
+            ${
+              shotsHtml
+                ? `<div class="works-item-media${
+                    i === 1 || i === 2 ? " works-item-media--grid" : ""
+                  }">
+                    ${shotsHtml}
+                  </div>`
+                : ""
+            }
+            <div class="works-item-body">
+              <p class="works-kicker">${s.kicker}</p>
+              <h3 class="works-title">${s.title}</h3>
+              <p class="works-desc">${s.desc}</p>
+              ${
+                buttons
+                  ? `<div class="works-actions">${buttons}</div>`
+                  : ""
+              }
+              ${
+                contrib
+                  ? `<div class="works-contrib" aria-label="기여도">${contrib}</div>`
+                  : ""
+              }
+            </div>
+          </article>
+        `;
+      })
+      .join("");
+  };
+
+  if (isMobile) {
+    renderMobileList();
+    return;
+  }
 
   // ✅ 이미지 로딩/디코딩 캐시 (전환 때 튀는 원인 제거)
   const imgCache = new Map();
@@ -1342,6 +1429,7 @@ cards.forEach((card) => {
 
 // section.SKILL
 document.addEventListener("DOMContentLoaded", () => {
+  if (window.matchMedia("(max-width: 500px)").matches) return;
   const marquee = document.querySelector(".skills-marquee");
   const track = marquee?.querySelector("[data-track]");
   if (!marquee || !track) return;
@@ -1428,6 +1516,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+  if (window.matchMedia("(max-width: 500px)").matches) return;
   const cursor = document.querySelector(".skills-cursor");
   const area = document.querySelector(".skills-marquee"); // ✅ 마퀴 영역
   if (!cursor || !area) return;
