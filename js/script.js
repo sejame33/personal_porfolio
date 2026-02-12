@@ -929,23 +929,22 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       kicker: `<span class="works-kicker-bold">핵심 역량 01</span> - 문제 정의와 해결`,
       title: "PROBLEM<br />SOLVING",
-      desc: `
-        문제 정의와 해결 역량을 보여주기 위해 팀장으로 진행한 1MILLION DANCE STUDIO<br /> 웹사이트 리뉴얼 프로젝트를 선정했습니다.
-
-        <span class="indent"> 기존 사이트는 수강 정보가 분산되어 있고, 클래스 탐색부터 신청까지의 흐름이 직관적이지 않아<br /> 사용자가 원하는 클래스를 찾는 데 불필요한 탐색 과정을 거쳐야 했습니다. 저는 이를 단순 UI 문제로 보지 않고,<br />“정보 구조와 신청 흐름이 연결되지 않은 상태”라는 구조적 문제로 정의했습니다.</span><br /> 
-        <span class="indent"> 이를 해결하기 위해<br /> 
-
-1. 클래스 탐색 기준을 재정의하고<br /> 
-
-2. 정보 위계를 정리해 IA를 재설계했으며<br /> 
-
-3. 탐색 → 상세 확인 → 신청까지의 단계를 최소화하는 플로우를 구성했습니다.</span>
-  <span class="indent">이 프로젝트를 통해 저는 디자인을 화면 단위 개선이 아닌, 사용자의 목표 달성을 돕는 흐름 설계의 문제로 접근하는 방식을 구체화할 수 있었습니다.</span>
-      `,
+      summary:
+        "원밀리언 댄스 스튜디오 사이트를 구매 전환 중심 구조로 리뉴얼한 프로젝트입니다. 사용자 흐름을 재정의해 수강권 구매까지 자연스럽게 연결했습니다.",
+      lesson:
+        "리뉴얼 프로젝트를 진행하며, 단순히 화면을 개선하는 것이 아니라, 사용자의 목표와 서비스의 목적을 연결하는 구조 설계가 중요하다는 것을 배웠습니다.",
+      workHighlight:
+        "'총괄 팀장'으로서 기획 단계에서</br> 문제 정의와 해결 방법을 정하고, 그걸 토대로 디자인을 했습니다. 전반적인 기획서의 내용를 정리 및 설계했습니다.",
+      workDetails: [
+        "A. 메인 페이지 / 클래스 탐색 구조 개선, 팝업 클래스 안내 설계, 마퀴 섹션 디자인",
+        "B. 메인 페이지 / 댄서·프로젝트·하이라이트 섹션 UI 리디자인",
+        "C. 서브 페이지 / 티켓·사용법·FAQ 화면 설계 및 UI 디자인 및 개발",
+        "D. 반응형 설계 / 메인 및 서브 페이지 반응형 구조 설계 및 구현",
+      ],
       shots: [
-        { src: "./img/p1-1.png", x: -59, y: -6, z: 2, r: 0 },
-        { src: "./img/p1-2.png", x: 27, y: 10, z: 1, r: 0 },
-        { src: "./img/p1-3.png", x: 6, y: 60, z: 0, r: 0 },
+        { src: "./img/p1-1.png", x: -225, y: -50, z: 2, r: 0, w: "120%" },
+        { src: "./img/p1-2.png", x: -115, y: 65, z: 1, r: 0, w: "120%" },
+        { src: "./img/p1-3.png", x: 35, y: 71, z: 0, r: 0, w: "120%" },
       ],
       buttons: [
         {
@@ -966,27 +965,28 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       kicker: `<span class="works-kicker-bold">핵심 역량 02</span> - UXUI 디자인`,
       title: "UXUI<br />DESIGN",
-      desc: `
-       UX/UI 역량을 보여주기 위해 팀장으로 진행한 NOVA 팬덤 앱 프로젝트를 선정했습니다.<br />
-        <span class="indent">초기 기획 단계에서 가장 크게 느낀 문제는 기능이 많음에도 불구하고,<br />사용자가 무엇을 해야 하는지 명확하지 않다는 점이었습니다. 콘텐츠 소비, 팬 활동, 굿즈 구매가 각각 존재했지만<br />
-        하나의 흐름으로 연결되지 않아 참여 경험이 단절되어 있었습니다.</span>
-        
-        <span class="indent">저는 이를 단순 화면 개선이 아닌, “팬의 행동 여정을 재설계하는 문제”로 정의했습니다.</span>
-        
-        <span class="indent">이를 해결하기 위해 팬 활동을 단계별(입문 – 참여 – 확장)로 구조화하고, 각 단계에서 필요한 정보와 행동을 중심으로<br />화면 흐름을 재구성했습니다. 특히 사용자의 활동 상태에 따라 노출되는 콘텐츠와 주요 CTA가 달라지도록<br />정책을 설계해, 자연스럽게 다음 행동으로 이어지도록 만들었습니다.</span>
-
-        <span class="indent">이 프로젝트를 통해 저는 디자인을 시각적인 결과물이 아니라, 사용자의 행동을 설계하는 구조적 문제 해결 과정으로<br />접근하는 방식을 확립할 수 있었습니다.</span>
-      `,
+      summary:
+        "버츄얼 아이돌과 팬을 연결하는 팬덤 앱으로, 사용자 상태(state) 기반 UX 구조를 설계한 프로젝트입니다. 디자인과 개발을 분리하지 않고 React 구현을 전제로 설계했습니다.",
+      lesson:
+        "디자인은 단순히 화면을 만드는 일이 아니라, 상태 변화와 동작 방식을 설계하는 일이라는 것을 배웠습니다. 컴포넌트 구조와 상태 흐름을 이해하며 개발과 연결되는 UX 사고를 기를 수 있었습니다.",
+      workHighlight:
+        "'총괄 팀장'으로서 디자인과 개발을 함께 고려하며, UX 구조 설계부터 구현까지 참여했습니다.",
+      workDetails: [
+        "A. 메인·샵 페이지 / 앨범·뮤비 상세 페이지 설계 및 개발",
+        "B. Dm페이지 + 메인·샵 배너 UI 디자인",
+        "C. 온보딩 및 아티스트 팔로잉 페이지 서브 디자인",
+        "C. 사용자 상태(User State) 설계 : 닉네임 저장, 팔로잉 아티스트 저장 상태 반영",
+      ],
       shots: [
-        { src: "./img/p0-1.png", x: 8, y: 14, z: 3, r: 0 },
-        { src: "./img/p0-2.png", x: 40, y: -11, z: 2, r: 0 },
-        { src: "./img/p0-3.png", x: 40, y: 50, z: 1, r: 0 },
-        { src: "./img/p0-4.png", x: 72, y: 32, z: 0, r: 0 },
+        { src: "./img/p0-1.png", x: 0, y: 15, z: 3, r: 0, w: "55%" },
+        { src: "./img/p0-2.png", x: -140, y: -90, z: 2, r: 0, w: "55%" },
+        { src: "./img/p0-3.png", x: 280, y: -45, z: 1, r: 0, w: "55%" },
+        { src: "./img/p0-4.png", x: 140, y: -240, z: 0, r: 0, w: "55%" },
       ],
       buttons: [
         {
           label: "사이트 바로가기",
-          url: "https://tubi-team-project-rho.vercel.app/",
+          url: "https://tubi-nova.vercel.app/",
         },
         {
           label: "기획서 보기",
@@ -1002,36 +1002,24 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       kicker: `<span class="works-kicker-bold">핵심 역량 03</span> - 새로운 아이디어`,
       title: "NEW IDEAS",
-      desc: `
-        새로운 문제 정의 역량을 보여주기 위해 개인 프로젝트 CRECRE(크레크레)를 기획했습니다.<br />
-
-        <span class="indent">
-          크레스티드 게코는 2–3일 간격으로 먹이를 주어야 하지만, 주기가 일정하지 않고 개체별 차이도 있어<br />집사들이 급여 일정을 자주 놓치는 문제가 있었습니다. 기존 반려동물 앱은 개·고양이 중심으로 구성되어 있어,<br />파충류 특화 관리 기능은 충분히 다뤄지지 않고 있었습니다.
-        </span><br />
-
-        <span class="indent">
-          저는 이를 단순 기록 기능이 아닌, “불규칙한 주기를 관리해야 하는 특수 반려동물의 관리 문제”로 정의했습니다.
-        </span><br />
-
-        <span class="indent">
-          이를 해결하기 위해
-
-<br />1. 급여 기록을 기반으로 다음 급여 시점을 자동 계산하도록 설계하고
-
-<br />2. 사용자가 주기를 직접 기억하지 않아도 되도록 흐름을 단순화했으며
-
-<br />3. 성장 기록(체중·크기 변화 등)을 함께 축적해 관리 상태를 시각적으로 확인할 수 있도록 구성했습니다.
-        </span>
-
-        <span class="indent">또한 복잡한 설정 과정을 최소화해, 기록 → 자동 계산 → 알림으로 이어지는 흐름이 자연스럽게 작동하도록<br />사용자 여정을 단순화했습니다.</span>
-        <span class="indent">이 프로젝트를 통해 저는 익숙한 카테고리 안에서도 아직 충분히 다뤄지지 않은 문제를 발견하고,<br />이를 구체적인 기능과 흐름으로 구조화하는 사고 방식을 확립할 수 있었습니다.</span>
-      `,
+      summary:
+        "반려동물 앱이 주로 강아지·고양이에 집중된 시장에서, 비주류 반려동물인 크레스티드 게코 집사들을 위한 앱으로, 먹이 주기·급여량을 계산하고 알림으로 관리 부담을 줄이는 프로젝트입니다. 익숙한 카테고리 안에서도 새로운 사용자와 문제를 발견하는 데 집중했습니다.",
+      lesson:
+        "사용자에게 필요한 건 “많은 정보”가 아니라 지금 당장 해야 할 행동을 명확히 알려주는 구조라는 걸 배웠습니다. 또한 상태(등록 개체/최근 기록/알림 설정)가 누적될수록 UX가 복잡해질 수 있어, 이를 단순하게 유지하는 정보 설계의 중요성을 체감했습니다.",
+      workHighlight:
+        "'개인 프로젝트'로 기획부터 UX 전략 수립, UI 디자인까지 전반을 담당했습니다.",
+      workDetails: [
+        "A. 사용자 리서치 및 문제 정의 : 집사들이 겪는 관리 혼란(먹이 주기 계산, 기록 누락 등) 정리",
+        "B. 정보 구조(IA) 설계 : ‘급여 알림 → 개체 관리 → 기록 확인’ 중심으로 흐름 재구성",
+        "C. 메인 대시보드 UXUI 설계 : 오늘 급여 여부, 다음 급여일, 최근 기록을 한눈에 확인하도록 설계",
+        "D. 인터랙션 프로토타입 제작 및 사용성 테스트",
+      ],
       shots: [
-        { src: "./img/p2-1.png", x: 10, y: -12, z: 4, r: 0 },
-        { src: "./img/p2-2.png", x: 10, y: 48, z: 3, r: 0 },
-        { src: "./img/p2-3.png", x: 41, y: 20, z: 2, r: 0 },
-        { src: "./img/p2-4.png", x: 72, y: -4, z: 1, r: 0 },
-        { src: "./img/p2-5.png", x: 72, y: 56, z: 0, r: 0 },
+        { src: "./img/p2-1.png", x: 80, y: -110, z: 4, r: 0, w: "50%" },
+        { src: "./img/p2-2.png", x: -110, y: 100, z: 3, r: 0, w: "50%" },
+        { src: "./img/p2-3.png", x: 80, y: -70, z: 2, r: 0, w: "50%" },
+        { src: "./img/p2-4.png", x: 210, y: -70, z: 1, r: 0, w: "50%" },
+        { src: "./img/p2-5.png", x: 723, y: -1149, z: 0, r: 0, w: "50%" },
       ],
       buttons: [
         {
@@ -1065,13 +1053,39 @@ document.addEventListener("DOMContentLoaded", () => {
   const nextBtn = section.querySelector('[data-arrow="next"]');
   const contribEl = section.querySelector("[data-contrib]");
 
-  const isMobile = window.matchMedia("(max-width: 500px)").matches;
-
   let index = 0;
   let isAnimating = false;
   let activeTween = null;
 
   const stripTags = (html) => String(html).replace(/<[^>]*>/g, "");
+  const toCssLength = (value, fallback) => {
+    if (value === undefined || value === null || value === "") return fallback;
+    return typeof value === "number" ? `${value}px` : String(value);
+  };
+  const formatWorkDetail = (text) => {
+    const withLabel = String(text).replace(
+      /^([A-Z]\.\s*)?(사용자\s*상태\s*\(User\s*State\)\s*설계|온보딩\s*및\s*아티스트\s*팔로잉\s*페이지|Dm\s*페이지\s*\+\s*메인\s*[+·]\s*샵\s*배너|메인\s*[+·]\s*샵\s*페이지|메인\s*\+\s*서브\s*페이지|메인\s*페이지|서브\s*페이지|전체\s*페이지|반응형\s*설계|사용자\s*리서치\s*및\s*문제\s*정의|정보\s*구조\s*\(IA\)\s*설계|메인\s*대시보드\s*UXUI\s*설계|인터랙션\s*프로토타입\s*제작)\s*(\/|:)?\s*/,
+      (_m, prefix = "", label, separator) => {
+        const sep = separator === ":" ? " : " : separator === "/" ? " / " : " ";
+        return `<span class="works-work-label">${prefix}${label}</span>${sep}`;
+      },
+    );
+
+    return withLabel.replace(
+      /반응형\s*설계/g,
+      (match) => `<span class="works-work-highlight">${match}</span>`,
+    );
+  };
+  const formatWorkHighlight = (text) =>
+    String(text).replace(
+      /'총괄 팀장'|총괄 팀장|'개인 프로젝트'|개인 프로젝트/g,
+      (match) => `<span class="works-work-highlight">${match}</span>`,
+    );
+  const formatOverviewText = (text) =>
+    String(text).replace(
+      /수강권\s*구매까지\s*자연스럽게\s*연결|사용자의\s*목표와\s*서비스의\s*목적|연결하는\s*구조\s*설계|사용자\s*상태\s*\(state\)\s*기반\s*UX\s*구조|개발과\s*연결되는\s*UX\s*사고|새로운\s*사용자와\s*문제를\s*발견|해야\s*할\s*행동을\s*명확히\s*알려주는\s*구조/g,
+      (match) => `<span class="works-work-highlight">${match}</span>`,
+    );
 
   const renderMobileList = () => {
     const inner = section.querySelector(".works-inner");
@@ -1088,6 +1102,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 src="${shot.src}"
                 alt="${stripTags(s.kicker)} 이미지 ${shotIndex + 1}"
                 class="${i === 2 && shotIndex === 0 ? "is-hidden" : ""}"
+                style="
+                  --shot-w:${toCssLength(shot.w, "100%")};
+                  --shot-max-h:${toCssLength(shot.maxH, "none")};
+                  --shot-x:${toCssLength(shot.offsetX ?? shot.x, "0px")};
+                  --shot-y:${toCssLength(shot.offsetY ?? shot.y, "0px")};
+                "
               />
             `,
           )
@@ -1126,7 +1146,9 @@ document.addEventListener("DOMContentLoaded", () => {
             ${
               shotsHtml
                 ? `<div class="works-item-media${
-                    i === 1 || i === 2 ? " works-item-media--grid" : ""
+                    i === 0 || i === 1 || i === 2
+                      ? " works-item-media--grid"
+                      : ""
                   }">
                     ${shotsHtml}
                   </div>`
@@ -1135,15 +1157,47 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="works-item-body">
               <p class="works-kicker">${s.kicker}</p>
               <h3 class="works-title">${s.title}</h3>
-              <p class="works-desc">${s.desc}</p>
+              <div class="works-overview">
+                <div class="works-overview-col">
+                  <h4 class="works-subtitle">간략 소개</h4>
+                  <p class="works-copy">${formatOverviewText(s.summary || "")}</p>
+                </div>
+                <div class="works-overview-col">
+                  <h4 class="works-subtitle">배운 점</h4>
+                  <p class="works-copy">${formatOverviewText(s.lesson || "")}</p>
+                </div>
+              </div>
+              <div class="works-workpart">
+                <h4 class="works-subtitle">작업한 부분</h4>
+                ${
+                  s.workHighlight
+                    ? `<p class="works-copy">${formatWorkHighlight(s.workHighlight)}</p>`
+                    : ""
+                }
+                ${
+                  (s.workDetails || []).length
+                    ? `<ol class="works-work-list">
+                        ${(s.workDetails || [])
+                          .map((item) => `<li>${formatWorkDetail(item)}</li>`)
+                          .join("")}
+                      </ol>`
+                    : ""
+                }
+              </div>
               ${
-                buttons
-                  ? `<div class="works-actions">${buttons}</div>`
-                  : ""
-              }
-              ${
-                contrib
-                  ? `<div class="works-contrib" aria-label="기여도">${contrib}</div>`
+                contrib || buttons
+                  ? `<div class="works-meta-row">
+                      ${
+                        contrib
+                          ? `<div class="works-contrib" aria-label="기여도">${contrib}</div>`
+                          : ""
+                      }
+                      ${
+                        buttons
+                          ? `<div class="works-actions works-actions--vertical">${buttons}</div>`
+                          : ""
+                      }
+                    </div>`
                   : ""
               }
             </div>
@@ -1153,10 +1207,8 @@ document.addEventListener("DOMContentLoaded", () => {
       .join("");
   };
 
-  if (isMobile) {
-    renderMobileList();
-    return;
-  }
+  renderMobileList();
+  return;
 
   // ✅ 이미지 로딩/디코딩 캐시 (전환 때 튀는 원인 제거)
   const imgCache = new Map();
